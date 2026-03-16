@@ -71,9 +71,11 @@ export default function Footer(){
     const textStyle = "text-[13px] md:text-[16px] md:leading-[20px] md:tracking-[-2%] text-[#FFFFFF]"
 
     return(
-        <footer className="w-full h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] bg-cover overflow-hidden relative">
+        <footer className="relative w-full h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] bg-cover overflow-hidden relative">
 
-            
+            <div className="w-full absolute top-0 left-0 aspect-1440/140 bg-black blur-[20px] -translate-y-[80%] ">
+
+            </div>
 
             <div className="w-full ">
 

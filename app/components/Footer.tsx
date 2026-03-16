@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { SplitText, ScrollTrigger } from "gsap/all";
+import { SplitText, ScrollTrigger, ScrollToPlugin } from "gsap/all";
 import { useRef, useEffect, useState } from "react";
 
 import ContainerLayout from "../layout/containerLayout"
@@ -9,6 +9,7 @@ import ContainerLayout from "../layout/containerLayout"
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer(){
 
@@ -33,13 +34,44 @@ export default function Footer(){
 
     },[])
     
-   
+   const toHIW = () =>{
+    gsap.to(window, {
+        scrollTo:"#HowItWorks",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+   const toROIC = () =>{
+    gsap.to(window, {
+        scrollTo:"#ROICalculator",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+
+   const toPS = () =>{
+    gsap.to(window, {
+        scrollTo:"#PlatformScope",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+   const toFAQ = () =>{
+    gsap.to(window, {
+        scrollTo:"#FAQ",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
 
 
     const textStyle = "text-[13px] md:text-[16px] md:leading-[20px] md:tracking-[-2%] text-[#FFFFFF]"
 
     return(
-        <footer className="w-full h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] overflow-hidden relative">
+        <footer className="w-full h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] bg-cover overflow-hidden relative">
 
             
 
@@ -53,23 +85,23 @@ export default function Footer(){
 
                         {/* Left side links */}
                         <ul className="flex items-center gap-10 mb-6 md:mb-0 mx-auto md:mx-0">
-                           <li className={`${textStyle} text-[13px] whitespace-nowrap`}>
-                            <a href="">
+                           <li onClick={()=>toHIW()} className={`${textStyle} text-[13px] whitespace-nowrap cursor-pointer`}>
+                            <a >
                                 How it Works
                             </a>
                             </li> 
-                           <li className={`${textStyle} text-[13px] whitespace-nowrap`}>
-                            <a href="">
+                           <li onClick={()=>toPS()} className={`${textStyle} text-[13px] whitespace-nowrap cursor-pointer`}>
+                            <a>
                                 Platform Scope
                             </a>
                             </li> 
-                           <li className={`${textStyle} text-[13px] whitespace-nowrap`}>
-                            <a href="">
+                           <li onClick={()=>toROIC()} className={`${textStyle} text-[13px] whitespace-nowrap cursor-pointer`}>
+                            <a>
                                 ROI Calculator
                             </a>
                             </li> 
-                           <li className={`${textStyle} text-[13px] whitespace-nowrap`}>
-                            <a href="">
+                           <li onClick={()=>toFAQ()} className={`${textStyle} text-[13px] whitespace-nowrap cursor-pointer`}>
+                            <a >
                                 FAQ
                             </a>
                             </li> 
@@ -105,7 +137,7 @@ export default function Footer(){
 
                     <div className="md:w-[70%] mx-auto md:pt-[9.17%] md:pb-[10.45%] mb-10 md:mb-0">
 
-                        <p className="text-center md:text-[30px] md:leading-[34px] md:tracking-[-0.36px] text-[#FFFFFFCC] md:pb-[2.6%] ">Got a question?</p>
+                        <p className="text-center md:text-[30px] md:leading-[34px] md:tracking-[-0.36px] text-[#FFFFFFCC]  ">Got a question?</p>
 
                         <h2 ref={triggerContainer} className=" text-center m-0 text-[60px] md:text-[clamp(160px,13.8vw,200px)] whitespace-nowrap md:leading-[200px] md:tracking-[-4%] text-[#FFFFFFCC]"><span className="typeText">Ask Norma </span>{isCursorVisible ? <span className="">|</span> : ''}</h2> 
 

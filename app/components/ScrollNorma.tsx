@@ -2,9 +2,9 @@ import { MacbookScroll } from "@/components/ui/macbook-scroll"
 
 export default function ScrollNorma() {
   return (
-    <section className="w-full bg-black overflow-clip">
+    <section id="ROICalculator" className="w-full bg-black overflow-clip">
 
-        <div className="w-full lg:-translate-y-[30%] lg:pt-[32%]">
+        <div className="w-full md:-translate-y-[30%] md:pt-[25%] 2xl:-translate-y-0 2xl:pt-0 ">
 
             <MacbookScroll
         src='/assets/img/ScrollNorma/Norma_ROI.png'
@@ -16,7 +16,7 @@ export default function ScrollNorma() {
         showGradient={false}
       />
 
-        </div>
+      </div>
       
     </section>
   )

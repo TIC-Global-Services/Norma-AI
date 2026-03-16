@@ -29,7 +29,12 @@ export default function Questions(){
     ]
 
     return(
-        <section className="w-full px-[5%] md:px-[4.1667%] pt-[10%] md:pt-[4.1667%] bg-black ">
+        <section id="FAQ" className="relative w-full px-[5%] md:px-[4.1667%] pt-[10%] md:pt-[4.1667%] bg-black ">
+
+             <div
+                className="w-full absolute top-0 left-0 aspect-1440/240 -translate-y-[80%] bg-black blur-[20px]"
+                ></div>
+
 
             {/* LOGO */}
             <div className="hidden md:block md:w-[10.606%] aspect-square overflow-hidden translate-y-[14.29%] ">

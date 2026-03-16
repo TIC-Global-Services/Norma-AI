@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { JSX } from "react"
 import { useState, useEffect, useRef } from "react";
+import Shaders from "./Reusable/Shaders";
 
 type dataIndex = 0 | 1 | 2;
 
@@ -168,14 +169,24 @@ export default function HowItWorks(){
     }
 
     return(
-        <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen   md:aspect-1440/910 overflow-hidden">
+        <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen overflow-hidden">
+
+            <div className="w-full absolute top-0 left-0 md:-translate-y-[71.43%]">
+                <div
+                className="w-full aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
+            </div>
 
             {/* BG IMAGE */}
             <img src="/assets/img/HowItWorks/bgImage.png" alt="bgImage" className="w-full h-full  object-cover"/>
 
 
             {/* Top Content */}
-            <div   className="absolute w-full top-[15%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]">
+            <div   className="absolute w-full top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]">
 
                 <button className="flex items-center gap-3 px-5 md:px-[4.26%] py-3 md:py-[2.98%] rounded-full bg-[#FFFFFF1A] md:mb-[6.38%] mx-auto md:mx-0">
 
@@ -201,7 +212,7 @@ export default function HowItWorks(){
 
                 {
                     data[currentData].bottom.map((data, id)=>(
-                        <div key={id} className="w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-4 md:py-[2.78%] px-4 md:px-[2.08%]">
+                        <div key={id} className="w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-4 md:py-[2.78%] px-4 md:px-[2.08%] ">
 
                             <div className="flex justify-between items-center pb-10 md:pb-[29.05%]">
 

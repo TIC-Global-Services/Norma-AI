@@ -3,6 +3,7 @@ import './global.css'
 import { Aeonik } from "./fonts";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Providers } from "./Providers";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
     <body className={`${Aeonik.variable} antialiased relative`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

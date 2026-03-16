@@ -1,14 +1,54 @@
 "use client";
 
 import { useState } from "react";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/all";
 
 import ContainerLayout from "../layout/containerLayout"
+
+
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Navbar(){
 
     const [isMenuClicked, setIsMenuClicked] = useState<boolean>(false);
 
     const textStyle = "text-[24px] md:text-[16px] md:leading-[18px] md:tracking-[-0.16px] text-[#FFFFFF]"
+
+
+    const toHIW = () =>{
+    gsap.to(window, {
+        scrollTo:"#HowItWorks",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+   const toROIC = () =>{
+    gsap.to(window, {
+        scrollTo:"#ROICalculator",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+
+   const toPS = () =>{
+    gsap.to(window, {
+        scrollTo:"#PlatformScope",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
+   const toFAQ = () =>{
+    gsap.to(window, {
+        scrollTo:"#FAQ",
+        ease:"power2.inOut",
+        duration:1,
+    })
+   }
+
 
     return(
         <nav className="w-full absolute top-0 left-0 z-30 ">
@@ -30,25 +70,20 @@ export default function Navbar(){
 
                     {/* Left side of Navbar */}
                     <ul className="flex flex-col md:flex-row items-start flex-nowrap gap-4 md:gap-8 md:items-center mb-4 md:mb-0 mt-20 md:mt-0 ml-10 md:ml-0">
-                        <li className={`${textStyle}`}>
-                            <a href="">Features</a>
+                        <li onClick={()=>toHIW()} className={`${textStyle} cursor-pointer`}>
+                            <a >How it Works</a>
                         </li>
-                        <li className={`${textStyle}`}>
-                            <a href="">Outcomes</a>
+                        <li onClick={()=>toPS()} className={`${textStyle} cursor-pointer`}>
+                            <a >Platform Scope</a>
                         </li>
-                        <li className={`${textStyle}`}>
-                            <a href="#HowItWorks">
-                                How It Works
+                        <li onClick={()=>toROIC()} className={`${textStyle} cursor-pointer`}>
+                            <a >
+                                ROI Calculator
                             </a>
                         </li>
-                        <li className={`${textStyle}`}>
-                            <a href="">
-                                Use Cases
-                            </a>
-                        </li>
-                        <li className={`${textStyle}`}>
-                            <a href="">
-                                Plans
+                        <li onClick={()=>toFAQ()} className={`${textStyle} cursor-pointer`}>
+                            <a >
+                                FAQ
                             </a>
                         </li>
                     </ul>

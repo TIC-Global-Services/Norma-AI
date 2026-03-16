@@ -1,10 +1,19 @@
+"use client";
+
 import { MacbookScroll } from "@/components/ui/macbook-scroll"
 
 export default function ScrollNorma() {
+
+  const height = window.innerHeight;
+
+  const translateValue = height < 800 ? 'xl:-translate-y-[20%]' : 'xl:-translate-y-[10%]';
+
+
+
   return (
     <section id="ROICalculator" className="w-full bg-black overflow-clip">
 
-        <div className="w-full md:-translate-y-[30%] md:pt-[25%] 2xl:-translate-y-0 2xl:pt-0 ">
+        <div className={`w-full md:-translate-y-[30%] md:pt-[25%] ${translateValue} 2xl:-translate-y-0 2xl:pt-0 `}>
 
             <MacbookScroll
         src='/assets/img/ScrollNorma/Norma_ROI.png'

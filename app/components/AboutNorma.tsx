@@ -32,7 +32,7 @@ export default function AboutNorma(){
             trigger: containerRef.current,
             pin: false,
             scrub: 2,
-            start:"32.5% bottom",
+            start:"35.5% bottom",
             end: "bottom bottom", 
             markers:false
         }
@@ -53,9 +53,10 @@ export default function AboutNorma(){
 
 
     return(
-        <section className="w-full bg-black">
+        <section id="PlatformScope" className="w-full bg-black">
 
             <ContainerLayout>
+
 
                 <div  ref={containerRef} className="w-full md:pt-[4.55%] md:pb-[18.94%]">
 

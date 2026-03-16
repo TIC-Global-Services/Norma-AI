@@ -5,8 +5,7 @@ import { MacbookScroll } from "@/components/ui/macbook-scroll"
 export default function ScrollNorma() {
 
   const height = window.innerHeight;
-
-  const translateValue = height < 800 ? 'xl:-translate-y-[20%]' : 'xl:-translate-y-[10%]';
+  const translateValue = height < 800 ? 'xl:-translate-y-[30%]' : 'xl:-translate-y-[10%]';
 
 
 

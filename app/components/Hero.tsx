@@ -46,7 +46,7 @@ export default function Hero(){
             
             <img ref={containerRef2} src="/assets/img/Hero/bgImage2.png" alt="bgImage" className="absolute bottom-0 left-0 z-20 w-full object-cover md:object-auto h-full" />
 
-            <div className="absolute z-10 top-[40%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%]">
+            <div className="absolute z-10 top-[40%] lg:top-[18%] xl:top-[20.36%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%] lg:w-[45%]">
                                 <h1 className="text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7">Never Miss A Patient Query Again</h1>
             </div>
 

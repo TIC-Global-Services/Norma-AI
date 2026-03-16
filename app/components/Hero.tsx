@@ -1,4 +1,6 @@
+"use client";
 
+import Shaders from "./Reusable/Shaders"
 
 export default function Hero(){
 
@@ -7,9 +9,15 @@ export default function Hero(){
 
             <img src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
 
-            <div className="absolute top-[40%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%]">
+            <img src="/assets/img/Hero/bgImage2.png" alt="bgImage" className="absolute bottom-0 left-0 z-20 w-full object-cover md:object-auto h-full" />
+
+            <div className="absolute z-10 top-[40%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%]">
+                                <h1 className="text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7">Never Miss A Patient Query Again</h1>
+            </div>
+
+            <div className="absolute z-30 top-[40%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%]">
                 
-                <h1 className="text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7">Never Miss A Patient Query Again</h1>
+                <h1 className="opacity-0 text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7">Never Miss A Patient Query Again</h1>
 
                 <p className="text-[14px] md:text-[20px] md:leading-[24px] md:tracking-[0%] text-[#FFFFFFE5] mb-6 md:mb-10 md:whitespace-nowrap">She remembers every patient, every appointment, every detail. <br />Message her and she handles the rest.</p>
 
@@ -23,13 +31,17 @@ export default function Hero(){
 
             </div>
 
-            <div className="absolute w-full md:w-auto bottom-10 flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[5.69%] ">
+            <div className="absolute z-30 w-full md:w-auto bottom-10 flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[5.69%] ">
 
                 <p className="md:text-[16px] md:leading-[16px] md:tracking-[-0.16px] text-[#FFFFFF]">Scroll to explore Norma</p>
 
                 <svg className="animate-bounce" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.8014 0.137169L5.803 5.00904L0.804564 0.137169C0.715288 0.0502196 0.595591 0.0015626 0.47097 0.0015626C0.346349 0.0015626 0.226652 0.0502196 0.137376 0.137169C0.0939067 0.179401 0.0593513 0.229924 0.0357547 0.285748C0.0121581 0.341573 0 0.401563 0 0.46217C0 0.522776 0.0121581 0.582766 0.0357547 0.63859C0.0593513 0.694414 0.0939067 0.744937 0.137376 0.787169L5.45456 5.96998C5.54789 6.06066 5.67288 6.11139 5.803 6.11139C5.93312 6.11139 6.05812 6.06066 6.15144 5.96998L11.4686 0.787169C11.5123 0.744914 11.5471 0.694294 11.5708 0.638326C11.5946 0.582357 11.6068 0.522183 11.6068 0.461388C11.6068 0.400593 11.5946 0.340419 11.5708 0.284451C11.5471 0.228482 11.5123 0.177862 11.4686 0.135607C11.3793 0.048657 11.2597 0 11.135 0C11.0104 0 10.8907 0.048657 10.8014 0.135607V0.137169Z" fill="white"/><path d="M10.8014 6.24856L5.803 11.1204L0.804564 6.24856C0.715288 6.16161 0.595591 6.11295 0.47097 6.11295C0.346349 6.11295 0.226652 6.16161 0.137376 6.24856C0.0939067 6.29079 0.0593513 6.34131 0.0357547 6.39714C0.0121581 6.45296 0 6.51295 0 6.57356C0 6.63417 0.0121581 6.69416 0.0357547 6.74998C0.0593513 6.8058 0.0939067 6.85633 0.137376 6.89856L5.45456 12.0814C5.54789 12.172 5.67288 12.2228 5.803 12.2228C5.93312 12.2228 6.05812 12.172 6.15144 12.0814L11.4686 6.89856C11.5123 6.8563 11.5471 6.80568 11.5708 6.74971C11.5946 6.69375 11.6068 6.63357 11.6068 6.57278C11.6068 6.51198 11.5946 6.45181 11.5708 6.39584C11.5471 6.33987 11.5123 6.28925 11.4686 6.247C11.3793 6.16005 11.2597 6.11139 11.135 6.11139C11.0104 6.11139 10.8907 6.16005 10.8014 6.247V6.24856Z" fill="white"/></svg>
 
 
+            </div>
+
+            <div className="w-full z-30 absolute bottom-0 left-0 translate-y-[42.857%]">
+                <Shaders />
             </div>
 
         </section>

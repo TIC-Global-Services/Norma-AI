@@ -40,7 +40,7 @@ export default function Hero(){
     }, [])
 
     return(
-        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-screen overflow-hidden">
+        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-auto overflow-hidden">
 
             <img ref={containerRef} src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
             

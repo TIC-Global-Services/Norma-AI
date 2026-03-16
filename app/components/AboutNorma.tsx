@@ -33,7 +33,7 @@ export default function AboutNorma(){
             pin: false,
             scrub: 2,
             start:"32.5% bottom",
-            end: "+=800", 
+            end: "bottom bottom", 
             markers:false
         }
     });

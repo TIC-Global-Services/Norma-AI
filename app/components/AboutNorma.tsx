@@ -30,10 +30,11 @@ export default function AboutNorma(){
          let tl = gsap.timeline({
         scrollTrigger: {
             trigger: containerRef.current,
-            pin: true,
-            scrub: true,
-            start:"10% top",
-            end: "+=800" 
+            pin: false,
+            scrub: 2,
+            start:"32.5% bottom",
+            end: "+=800", 
+            markers:false
         }
     });
 
@@ -46,8 +47,8 @@ export default function AboutNorma(){
         color: "#552DF6",
         stagger: 0.08
     });
-        
-
+    
+    
     },[])
 
 

@@ -1,15 +1,50 @@
 "use client";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useEffect, useRef } from "react";
+
 import Shaders from "./Reusable/Shaders"
+import {Parallax} from "react-scroll-parallax"
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 export default function Hero(){
 
+    let containerRef2 = useRef(null);
+    let containerRef = useRef(null);
+
+    useEffect(()=>{
+
+        gsap.to(containerRef2.current, {
+            y:-150,
+            scrollTrigger:{
+                trigger:containerRef2.current,
+                start:"bottom bottom",
+                scrub:true,
+                pin:false,
+            }
+        })
+
+        gsap.to(containerRef.current, {
+            y:-150,
+            scrollTrigger:{
+                trigger:containerRef.current,
+                start:"bottom bottom",
+                scrub:true,
+                pin:false,
+            }
+        })
+
+    }, [])
+
     return(
-        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 overflow-hidden">
+        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-screen overflow-hidden">
 
-            <img src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
-
-            <img src="/assets/img/Hero/bgImage2.png" alt="bgImage" className="absolute bottom-0 left-0 z-20 w-full object-cover md:object-auto h-full" />
+            <img ref={containerRef} src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
+            
+            <img ref={containerRef2} src="/assets/img/Hero/bgImage2.png" alt="bgImage" className="absolute bottom-0 left-0 z-20 w-full object-cover md:object-auto h-full" />
 
             <div className="absolute z-10 top-[40%] left-0 w-full  md:top-[20.36%] md:left-[30.42%] text-center mx-auto md:w-[39.24%]">
                                 <h1 className="text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7">Never Miss A Patient Query Again</h1>

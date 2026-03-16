@@ -34,7 +34,7 @@ export default function ExperienceNorma() {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen md:pt-[6.94%] bg-black"
+      className="w-full h-screen md:pt-[6.94%] bg-black overflow-hidden"
     >
       {/* TOP TITLE CONTENT */}
       <div className="w-full md:w-[45.14%] text-center mx-auto px-5 md:px-0 mt-20 md:mt-0">
@@ -55,6 +55,11 @@ export default function ExperienceNorma() {
           className="w-full h-full object-cover"
         />
       </div>
+                <div
+                className="w-full absolute bottom-0 left-0 aspect-1440/240 translate-y-[80%] blur-[20px] bg-[#000000]"
+                />
+
+
     </section>
   );
 }

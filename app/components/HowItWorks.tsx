@@ -32,9 +32,9 @@ export default function HowItWorks(){
                 onUpdate: (self) =>{
                     const p = self.progress;
 
-                    if(p < 0.33){
+                    if(p < 0.25){
                         setCurrentData(0)
-                    } else if(p < 0.66) setCurrentData(1);
+                    } else if(p < 0.70) setCurrentData(1);
                     else setCurrentData(2);
                 }
             }
@@ -212,17 +212,45 @@ export default function HowItWorks(){
 
                 {
                     data[currentData].bottom.map((data, id)=>(
-                        <div key={id} className="w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-4 md:py-[2.78%] px-4 md:px-[2.08%] ">
+                        <div key={id} className="relative group group-hover:backdrop-blur-none overflow-hidden w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-4 md:py-[2.78%] px-4 md:px-[2.08%] ">
 
-                            <div className="flex justify-between items-center pb-10 md:pb-[29.05%]">
+                            <div className="absolute inset-0 overflow-hidden ">
+                                <video 
+                                className="block w-full h-full object-cover duration-400 opacity-0 group-hover:opacity-100 transition-opacity scale-120" 
+                                autoPlay 
+                                playsInline 
+                                loop 
+                                muted
+                                > 
+        <source src="/assets/vid/Soft Abstract Gradient Loop.mp4" />
+    </video>
+</div>
+
+                            <div className="opacity-0 flex justify-between items-center pb-10 md:pb-[29.05%]">
 
                                 <h3 className="text-[20px] md:text-[32px] md:leading-[36px] md:tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
 
                                 {iconMatch[data.icon]}
 
                             </div>
+                            <p className="opacity-0 md:text-[16px] md:leading-[16px] md:tracking-[0%] text-[#FFFFFF]">{data.text}</p>
 
-                            <p className="md:text-[16px] md:leading-[16px] md:tracking-[0%] text-[#FFFFFF]">{data.text}</p>
+
+                            <div className="absolute inset-0 w-full  py-4 md:py-[8.33%] px-4 md:px-[6.25%] ">
+
+                                <div className="flex justify-between items-center pb-10 md:pb-[29.05%]">
+
+                                    <h3 className="text-[20px] md:text-[32px] md:leading-[36px] md:tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
+
+                                    {iconMatch[data.icon]}
+
+                                </div>
+
+                                                            <p className="md:text-[16px] md:leading-[16px] md:tracking-[0%] text-[#FFFFFF]">{data.text}</p>
+
+
+                            </div>
+
                             
 
                         </div>

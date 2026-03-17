@@ -48,8 +48,8 @@ export default function Hero(){
             {/* Mountain BG Image */}
             <img ref={containerRef2} src="/assets/img/Hero/bgImage2.png" alt="bgImage" className="absolute bottom-0 left-0 z-20 w-full object-cover md:object-auto h-full" />
 
-            {/* Overlay on top */}
-            <div className="absolute top-0 left-0 w-full h-[15%] bg-black/0.8 z-90"></div>
+            {/* Overlay */}
+            <div className="absolute top-0 left-0 w-full h-full bg-black/7 z-[900]"></div>
 
             {/* Header text which partially hides inside the mountain */}
             <div className="absolute z-10 top-[40%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] w-full flex justify-center items-center">

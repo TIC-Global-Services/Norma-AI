@@ -87,8 +87,14 @@ export default function Hero(){
             </div>
 
             {/* Shaders at the bottom */}
-            <div className="w-full z-30 absolute bottom-0 left-0 translate-y-[42.857%]">
-                <Shaders />
+            <div className="w-full absolute bottom-0 left-0 md:-translate-y-[71.43%]">
+                <div
+                className="w-full aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
             </div>
 
         </section>

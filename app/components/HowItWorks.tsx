@@ -40,6 +40,8 @@ export default function HowItWorks(){
             }
         });
 
+        
+
         tl.to(topContentRef.current, {
             opacity:0,
         })
@@ -171,6 +173,7 @@ export default function HowItWorks(){
     return(
         <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen overflow-hidden">
 
+            {/* Overlay blur shaders */}
             <div className="w-full absolute top-0 left-0 md:-translate-y-[71.43%]">
                 <div
                 className="w-full aspect-1440/140 bg-[#000000]"

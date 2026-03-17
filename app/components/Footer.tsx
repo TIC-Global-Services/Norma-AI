@@ -73,8 +73,14 @@ export default function Footer(){
     return(
         <footer className="relative w-full h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] bg-cover overflow-hidden relative">
 
-            <div className="w-full absolute top-0 left-0 aspect-1440/140 bg-black blur-[20px] -translate-y-[80%] ">
-
+            <div className="w-full absolute top-0 left-0 md:-translate-y-[71.43%]">
+                <div
+                className="w-full aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
             </div>
 
             <div className="w-full ">

@@ -51,7 +51,7 @@ export default function Navbar(){
 
 
     return(
-        <nav className="w-full absolute top-0 left-0 z-30 ">
+        <nav className="w-full absolute top-0 left-0 z-50 ">
 
             <ContainerLayout>
 

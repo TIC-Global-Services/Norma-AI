@@ -38,7 +38,7 @@ export default function NormaCore(){
 
                     {
                         data.map((data, id)=>(
-                            <div className="md:w-[15.47%]">
+                            <div key={id} className="md:w-[15.47%]">
                                 <div className=" items-center">{data.icon}</div>
 
                                 <p className="md:text-[24px] md:leading-[26px] md:tracking-[-2%] text-center text-[#FFFFFF]">{data.text}</p>

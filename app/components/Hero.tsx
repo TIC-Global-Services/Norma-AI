@@ -21,7 +21,7 @@ export default function Hero(){
             y:-150,
             scrollTrigger:{
                 trigger:containerRef2.current,
-                start:"bottom bottom",
+                start:"top top",
                 scrub:true,
                 pin:false,
             }
@@ -31,7 +31,7 @@ export default function Hero(){
             y:-150,
             scrollTrigger:{
                 trigger:containerRef.current,
-                start:"bottom bottom",
+                start:"top top",
                 scrub:true,
                 pin:false,
             }

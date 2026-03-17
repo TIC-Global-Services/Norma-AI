@@ -28,7 +28,9 @@ export default function HowItWorks(){
             scrollTrigger:{
                 trigger:containerRef.current,
                 pin:true,
-                scrub:true,
+                scrub:0.3,
+                start:"top top",
+                end:"+=2000",
                 onUpdate: (self) =>{
                     const p = self.progress;
 

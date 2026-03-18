@@ -67,7 +67,7 @@ export default function Navbar() {
   return (
     <nav
       className={`w-full ${
-        isMenuClicked ? "h-full bg-black/80 blur-[1px]" : ""
+        isMenuClicked ? "h-full bg-black/80 backdrop-blur-[10px]" : ""
       } absolute top-0 left-0 z-[9999] `}
     >
       <ContainerLayout>

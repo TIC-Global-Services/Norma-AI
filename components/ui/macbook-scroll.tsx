@@ -132,14 +132,14 @@ export const Lid = ({
   src?: string;
 }) => {
   return (
-    <div className="relative [perspective:800px] ">
+    <div className="relative  [perspective:800px] ">
       <div
         style={{
           transform: "perspective(800px) rotateX(-25deg) translateZ(0px)",
           transformOrigin: "bottom",
           transformStyle: "preserve-3d",
         }}
-        className="relative h-[12rem] w-[32rem] rounded-2xl bg-[#010101] p-2"
+        className="relative h-[12rem] w-[32rem] aspect-[3684/3374] rounded-2xl bg-[#010101] p-2"
       >
         <div
           style={{
@@ -161,13 +161,13 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 h-80 w-[32rem] rounded-2xl bg-[#010101] p-2"
+        className="absolute inset-0 w-full aspect-square md:aspect-auto md:h-80 md:w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
-        <div className="absolute inset-0 rounded-lg bg-[#272729]" />
+        <div className="absolute inset-0  rounded-lg bg-[#272729]" />
         <img
           src={src as string}
           alt="aceternity logo"
-          className="absolute inset-0 h-full w-full rounded-lg object-fill object-left-top"
+          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
         />
       </motion.div>
     </div>

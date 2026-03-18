@@ -52,7 +52,7 @@ export default function Hero(){
             <div className="absolute top-0 left-0 w-full h-full bg-black/7 z-[900]"></div>
 
             {/* Header text which partially hides inside the mountain */}
-            <div className="absolute z-10 top-[40%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] w-full flex justify-center items-center">
+            <div className="absolute z-10 top-[24%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] w-full flex justify-center items-center">
 
                                 <h1 className="text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7 text-center">Never Miss A Patient <br /> Query Again</h1>
 
@@ -60,9 +60,9 @@ export default function Hero(){
 
             {/* Remaining Header content */}
 
-            <div className="absolute z-20 top-[40%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] left-0 w-full flex flex-col justify-center items-center ">
+            <div className="absolute z-20 top-[24%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] left-0 w-full flex flex-col justify-center items-center ">
                 
-                <h1 className="opacity-0 text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-4 md:mb-7 text-center">Never Miss A Patient <br /> Query Again</h1>
+                <h1 className="opacity-0 text-[36px] md:text-[clamp(40px,10vh,64px)] md:leading-[66px] md:tracking-[-1px] text-[#FFFFFFE5] mb-7 md:mb-7 text-center">Never Miss A Patient <br /> Query Again</h1>
                 
                 <p className="text-[14px] text-center md:text-[20px] md:leading-[24px] md:tracking-[0%] text-[#FFFFFFE5] mb-6  md:whitespace-nowrap">She remembers every patient, every appointment, every detail. <br />Message her and she handles the rest.</p>
 

@@ -176,11 +176,23 @@ export default function HowItWorks(){
         <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen overflow-hidden">
 
             {/* Overlay blur shaders */}
-            <div className="w-full absolute top-0 left-0 md:-translate-y-[71.43%]">
+            <div className="hidden w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[71.43%]">
                 <div
-                className="w-full aspect-1440/140 bg-[#000000]"
+                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
                 style={{
                     maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
+            </div>
+
+            {/* Mobile overlay */}
+
+            <div className="w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[71.43%]">
+                <div
+                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, transparent 100%)",
                     WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
                 }}
                 />
@@ -191,20 +203,20 @@ export default function HowItWorks(){
 
 
             {/* Top Content */}
-            <div   className="absolute w-full top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]">
+            <div   className="absolute w-full top-[7.32%] md:top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]">
 
-                <button className="flex items-center gap-3 px-5 md:px-[4.26%] py-3 md:py-[2.98%] rounded-full bg-[#FFFFFF1A] md:mb-[6.38%] mx-auto md:mx-0">
+                <button className="flex items-center gap-3 px-[12px] md:px-[4.26%] py-[11px] md:py-[2.98%] rounded-full bg-[#FFFFFF1A] mb-5 md:mb-[6.38%] mx-4 md:mx-auto md:mx-0">
 
                     <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="6" rx="3" fill="white"/></svg>
-                    <p className=" md:text-[14px] md:leading-[14px] md:tracking-[0%] text-[#FFFFFF]">How it works</p>
+                    <p className="text-[12px]  md:text-[14px] leading-[14px] md:tracking-[0%] text-[#FFFFFF]">How it works</p>
 
                 </button>
 
                 <div ref={topContentRef} className="w-full">
 
-                    <h2 className="text-[30px] md:text-[50px] md:leading-[36px] md:tracking-[0%] text-[#FFFFFF] md:pb-[4.2553%] text-center md:text-left">{data[currentData].top.title}</h2>
+                    <h2 className="text-[24px] leading-[28px] md:text-[50px] md:leading-[36px] tracking-[0%] text-[#FFFFFF] px-4 pb-4 md:pb-[4.2553%] text-left">{data[currentData].top.title}</h2>
 
-                <p className="text-[14px] md:text-[16px] md:leading-[18px] md:tracking-[0%] text-[#FFFFFF] text-center md:text-left px-4 md:px-0">{data[currentData].top.text}</p>
+                <p className="text-[14px] leading-[16px] md:text-[16px] md:leading-[18px] tracking-[0%] text-[#FFFFFF] text-left px-4 md:px-0">{data[currentData].top.text}</p>
                     
                 </div>
                 
@@ -217,7 +229,7 @@ export default function HowItWorks(){
 
                 {
                     data[currentData].bottom.map((data, id)=>(
-                        <div key={id} className="relative group group-hover:backdrop-blur-none overflow-hidden w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-4 md:py-[2.78%] px-4 md:px-[2.08%] ">
+                        <div key={id} className="relative group group-hover:backdrop-blur-none overflow-hidden w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] py-[35px] md:py-[2.78%] px-[35px]  md:px-[2.08%] ">
 
                             <div className="absolute inset-0 overflow-hidden ">
                                 <video 
@@ -227,31 +239,31 @@ export default function HowItWorks(){
                                 loop 
                                 muted
                                 > 
-        <source src="/assets/vid/Soft Abstract Gradient Loop.mp4" />
-    </video>
-</div>
+                                <source src="/assets/vid/Soft Abstract Gradient Loop.mp4" />
+                                </video>
+                            </div>
 
-                            <div className="opacity-0 flex justify-between items-center pb-10 md:pb-[29.05%]">
+                            <div className="opacity-0 flex justify-between items-center pb-[24px] md:pb-[29.05%]">
 
-                                <h3 className="text-[20px] md:text-[32px] md:leading-[36px] md:tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
+                                <h3 className="text-[24px] md:text-[32px] leading-[36px] tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
 
                                 {iconMatch[data.icon]}
 
                             </div>
-                            <p className="opacity-0 md:text-[16px] md:leading-[16px] md:tracking-[0%] text-[#FFFFFF]">{data.text}</p>
+                            <p className="opacity-0 text-[12px] md:text-[16px] leading-[16px] tracking-[0%] text-[#FFFFFF]">{data.text}</p>
 
 
-                            <div className="absolute inset-0 w-full  py-4 md:py-[8.33%] px-4 md:px-[6.25%] ">
+                            <div className="absolute inset-0 w-full  py-[35px] md:py-[8.33%] px-5 md:px-[6.25%] ">
 
-                                <div className="flex justify-between items-center pb-10 md:pb-[29.05%]">
+                                <div className="flex justify-between items-center pb-[24px] md:pb-[29.05%]">
 
-                                    <h3 className="text-[20px] md:text-[32px] md:leading-[36px] md:tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
+                                    <h3 className="text-[24px] md:text-[32px] leading-[36px] tracking-[-0.2px] text-[#FFFFFF]">{data.title}</h3>
 
                                     {iconMatch[data.icon]}
 
                                 </div>
 
-                                                            <p className="md:text-[16px] md:leading-[16px] md:tracking-[0%] text-[#FFFFFF]">{data.text}</p>
+                                                            <p className="text-[12px] md:text-[16px] leading-[16px] tracking-[0%] text-[#FFFFFF]">{data.text}</p>
 
 
                             </div>

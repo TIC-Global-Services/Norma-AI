@@ -17,7 +17,7 @@ export default function QandA({question, answer}:QandAProps){
         <div className="w-full">
 
             {/* Question */}
-                < div onClick={()=>{setIsClicked(!isClicked)}} className="md:w-fit md:px-[2.244%] md:py-[1.5%] md:mt-[1.25%] md:mb-[1.25%] bg-[#FFFFFF1A] rounded-[14px] md:text-[16px md:leading-[20px] md:tracking-[0%] text-[#FFFFFF] cursor-pointer">
+                < div onClick={()=>{setIsClicked(!isClicked)}} className="w-[53.33%] md:w-auto md:w-fit px-[20.5px] md:px-[2.244%] py-[20px] md:py-[1.5%] mt-[15.5px] md:mt-[1.25%] mb-[15.5px] md:mb-[1.25%] bg-[#FFFFFF1A] rounded-[14px] text-[14px] leading-[16px]  md:text-[16px md:leading-[20px] tracking-[0%] text-[#FFFFFF] cursor-pointer">
                 <p>{question}</p>
                 </div>
 
@@ -28,7 +28,7 @@ export default function QandA({question, answer}:QandAProps){
             animate={{ display: isClicked ? "" : "none"}}
             transition={{duration:0.5, delay:0.1, ease:"easeIn"}}
 
-            onClick={()=>{setIsClicked(false)}} className={`ml-auto max-w-[67.08%] bg-[#FFFFFF4D] md:px-[2.93%] md:py-[1.5%] md:mt-[1.75%] md:mb-[1.75%] bg-[#FFFFFF4D] rounded-[14px] md:text-[16px] md:leading-[20px] md:tracking-[-2%] text-[#000000] cursor-pointer`}>{answer}</motion.p>
+            onClick={()=>{setIsClicked(false)}} className={`w-full ml-auto md:max-w-[67.08%] bg-[#FFFFFF4D] px-[20.5px] md:px-[2.93%] py-[20px] md:py-[1.5%] md:mt-[1.75%] md:mb-[1.75%] bg-[#FFFFFF4D] rounded-[14px] text-[14px] leading-[16px] md:text-[16px] leading-[20px] md:tracking-[-2%] text-[#000000] cursor-pointer`}>{answer}</motion.p>
 
         </div>
     )

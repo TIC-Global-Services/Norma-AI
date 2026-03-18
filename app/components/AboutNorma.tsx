@@ -61,7 +61,7 @@ export default function AboutNorma(){
                 <div  ref={containerRef} className="w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]">
 
                     {/* LOGO */}
-                    <div className="w-[15%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[3.79%] ">
+                    <div className="w-[20%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[3.79%] ">
 
                         <img src="/assets/img/logo/logo.png" alt="logo" className="w-full h-full object-cover scale-300 md:scale-200" />
 

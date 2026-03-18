@@ -101,7 +101,7 @@ export default function NormaCore() {
   ];
 
   return (
-    <section className="w-full md:pt-[8.33%] bg-black">
+    <section className="w-full pt-20 md:pt-[8.33%] bg-black">
       <h2 className="text-center text-[20px] leading-[24px] pb-[40px]  md:text-[38px] md:leading-[40px] tracking-[-2%] md:pb-[5.56%] text-[#FFFFFF]">
         One message. <br /> Everything moves.
       </h2>

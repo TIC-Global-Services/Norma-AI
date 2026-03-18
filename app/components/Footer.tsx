@@ -161,9 +161,9 @@ export default function Footer(){
 
                         <div className="flex flex-wrap md:flex-nowrap gap-6 mb-4 md:mb-0 mx-auto md:mx-0 order-1 md:order-2" >
 
-                            <div className="flex gap-2 mx-auto md:mx-0">
+                            <div className="flex items-center gap-2 mx-auto md:mx-0">
 
-                                <button className={` ${textStyle}  tracking-[0%] md:w-[24px] aspect-square rounded-full bg-[#FFFFFF4D] flex items-center justify-center`}>
+                                <button className={` ${textStyle}  tracking-[0%] w-[24px] aspect-square rounded-full bg-[#FFFFFF4D] flex items-center justify-center`}>
                                     M
                                 </button>
 
@@ -172,9 +172,9 @@ export default function Footer(){
                             </div>
 
 
-                            <div className="flex  gap-2 mx-auto md:mx-0">
+                            <div className="flex items-center  gap-2 mx-auto md:mx-0">
 
-                                <button className={`${textStyle}  tracking-[0%] md:w-[24px] aspect-square rounded-full bg-[#FFFFFF4D] flex items-center justify-center`}>
+                                <button className={`${textStyle}  tracking-[0%] w-[24px] aspect-square rounded-full bg-[#FFFFFF4D] flex items-center justify-center`}>
                                     T
                                 </button>
 

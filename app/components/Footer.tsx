@@ -92,7 +92,7 @@ export default function Footer(){
                     <div className="w-full flex flex-wrap md:flex-nowrap justify-between items-center ml-5 md:ml-0">
 
                         {/* Left side links */}
-                        <ul className="flex items-center gap-[10px] md:gap-10 mb-3 md:mb-0 mr-auto md:mr-0 md:mx-auto md:mx-0">
+                        <ul className="flex items-center gap-[10px] md:gap-10 mb-3 md:mb-0 mr-auto md:mr-auto md:mx-0 md:mx-0">
                            <li onClick={()=>toHIW()} className={`${textStyle} whitespace-nowrap cursor-pointer`}>
                             <a >
                                 How it Works

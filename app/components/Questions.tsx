@@ -31,9 +31,16 @@ export default function Questions(){
     return(
         <section id="FAQ" className="relative w-full px-[5%] md:px-[4.1667%] pt-[10%] md:pt-[4.1667%] bg-black ">
 
-             <div
-                className="w-full absolute top-0 left-0 aspect-1440/240 -translate-y-[80%] bg-black blur-[20px]"
-                ></div>
+            {/* Overlay blur shaders */}
+            <div className=" w-full absolute top-0 left-0  -translate-y-[50%] md:-translate-y-[71.43%]">
+                <div
+                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
+            </div>
 
 
             {/* LOGO */}

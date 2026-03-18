@@ -203,9 +203,9 @@ export default function HowItWorks(){
 
 
             {/* Top Content */}
-            <div   className="absolute w-full top-[7.32%] md:top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]">
+            <div   className="absolute w-full top-[7.32%] md:top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%] ">
 
-                <button className="flex items-center gap-3 px-[12px] md:px-[4.26%] py-[11px] md:py-[2.98%] rounded-full bg-[#FFFFFF1A] mb-5 md:mb-[6.38%] mx-4 md:mx-auto md:mx-0">
+                <button className="flex items-center gap-3 px-[12px] md:px-[4.26%] py-[11px] md:py-[2.98%] rounded-full bg-[#FFFFFF1A] mb-5 md:mb-[6.38%] mx-4 md:mr-auto md:mx-0">
 
                     <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="6" rx="3" fill="white"/></svg>
                     <p className="text-[12px]  md:text-[14px] leading-[14px] md:tracking-[0%] text-[#FFFFFF]">How it works</p>
@@ -214,7 +214,7 @@ export default function HowItWorks(){
 
                 <div ref={topContentRef} className="w-full">
 
-                    <h2 className="text-[24px] leading-[28px] md:text-[50px] md:leading-[36px] tracking-[0%] text-[#FFFFFF] px-4 pb-4 md:pb-[4.2553%] text-left">{data[currentData].top.title}</h2>
+                    <h2 className="text-[24px] leading-[28px] md:text-[50px] md:leading-[36px] tracking-[0%] text-[#FFFFFF] px-4 md:px-0 pb-4 md:pb-[4.2553%] text-left">{data[currentData].top.title}</h2>
 
                 <p className="text-[14px] leading-[16px] md:text-[16px] md:leading-[18px] tracking-[0%] text-[#FFFFFF] text-left px-4 md:px-0">{data[currentData].top.text}</p>
                     

@@ -193,7 +193,7 @@ export default function HowItWorks(){
                 className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
                 style={{
                     maskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
-                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, black 70%, transparent 100%)",
                 }}
                 />
             </div>

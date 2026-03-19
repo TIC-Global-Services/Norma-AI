@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Shaders from "./Reusable/Shaders"
 import {Parallax} from "react-scroll-parallax"
@@ -11,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Hero(){
+
+    const [textOpacity , setTextOpacity] = useState<boolean>(true);
 
     let containerRef2 = useRef(null);
     let containerRef = useRef(null);
@@ -34,13 +36,21 @@ export default function Hero(){
                 start:"top top",
                 scrub:true,
                 pin:false,
+                onUpdate: (self) =>{
+                    const p = self.progress;
+                    if(p>0.15){
+                        setTextOpacity(false)
+                    } else {
+                        setTextOpacity(true)
+                    }
+                }
             }
         })
 
     }, [])
 
     return(
-        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-auto overflow-hidden">
+        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-auto overflow-hidden ">
 
             {/* Complete BG Image */}
             <img ref={containerRef} src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
@@ -77,7 +87,7 @@ export default function Hero(){
             </div>
 
             {/* Bottom scroll text + icon */}
-            <div className="absolute z-30 w-full md:w-auto bottom-10 flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[5.69%] ">
+            <div className={`${textOpacity ? '' : 'opacity-0 transition-opacity'} absolute z-30 w-full md:w-auto bottom-10 flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[5.69%] `}>
 
                 <p className="md:text-[16px] md:leading-[16px] md:tracking-[-0.16px] text-[#FFFFFF]">Scroll to explore Norma</p>
 

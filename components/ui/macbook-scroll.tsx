@@ -23,6 +23,7 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
+import Image from "next/image";
 
 
 export const MacbookScroll = ({
@@ -67,7 +68,7 @@ const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
+      className="flex  min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
     >
       <motion.h2
         style={{
@@ -91,7 +92,7 @@ const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
         translate={translate}
       />
       {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+      <div className="relative -z-10 h-[30rem] w-[40rem] md:h-[30rem] md:w-[44rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
         {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
@@ -132,20 +133,20 @@ export const Lid = ({
   src?: string;
 }) => {
   return (
-    <div className="relative  [perspective:800px] ">
+    <div className="relative   [perspective:800px] ">
       <div
         style={{
           transform: "perspective(800px) rotateX(-25deg) translateZ(0px)",
           transformOrigin: "bottom",
           transformStyle: "preserve-3d",
         }}
-        className="relative h-[12rem] w-[32rem] aspect-[3684/3374] rounded-2xl bg-[#010101] p-2"
+        className="relative h-[20rem] w-[40rem]  md:h-[12rem] md:w-[48rem] aspect-[3684/3374] rounded-2xl bg-[#010101] p-2"
       >
         <div
           style={{
             boxShadow: "0px 2px 0px 2px #171717 inset",
           }}
-          className="absolute inset-0 flex items-center justify-center rounded-lg bg-[#010101]"
+          className="absolute inset-0 flex mx-10 my-7 md:mx-0 md:my-0  items-center justify-center rounded-lg bg-[#010101] "
         >
           <span className="text-white">
             <AceternityLogo />
@@ -161,13 +162,14 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 w-full aspect-square md:aspect-auto md:h-80 md:w-[32rem] rounded-2xl bg-[#010101] p-2"
+        className="absolute inset-0 w-full aspect-square md:aspect-[3684/3374] md:w-[48rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0  rounded-lg bg-[#272729]" />
-        <img
+        <Image
+        fill
           src={src as string}
           alt="aceternity logo"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+          className="absolute inset-0  h-full w-full rounded-lg object-cover object-left-top"
         />
       </motion.div>
     </div>
@@ -177,7 +179,7 @@ export const Lid = ({
 export const Trackpad = () => {
   return (
     <div
-      className="mx-auto my-1 h-32 w-[40%] rounded-xl"
+      className="mx-auto scale-150 my-1 h-32 w-[40%] rounded-xl"
       style={{
         boxShadow: "0px 0px 1px 1px #00000020 inset",
       }}
@@ -187,7 +189,7 @@ export const Trackpad = () => {
 
 export const Keypad = () => {
   return (
-    <div className="mx-1 h-full [transform:translateZ(0)] rounded-md bg-[#050505] p-1 [will-change:transform]">
+    <div className="mx-20 mt-25  scale-140  h-full [transform:translateZ(0)] rounded-md bg-[#050505] p-1 [will-change:transform]">
       {/* First Row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn
@@ -588,7 +590,7 @@ export const KBtn = ({
 export const SpeakerGrid = () => {
   return (
     <div
-      className="mt-2 flex h-40 gap-[2px] px-[0.5px]"
+      className="mt-2 scale-150 flex h-40 gap-[2px] px-[0.5px]"
       style={{
         backgroundImage:
           "radial-gradient(circle, #08080A 0.5px, transparent 0.5px)",

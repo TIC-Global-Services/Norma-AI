@@ -6,7 +6,7 @@ import { MacbookScroll } from "@/components/ui/macbook-scroll";
 // --- Screen dimension → translateY lookup ---
 const translateByHeight: Record<number, string> = {
   600: "xl:-translate-y-[20%] md:-translate-y-[25%] md:scale-70",
-  768: "xl:-translate-y-[17%]",
+  768: " xl:-translate-y-[17%]",
   800: "xl:-translate-y-[10%]",
   900: "xl:-translate-y-[10%]",
   1080: "xl:-translate-y-[-4%] xl:scale-140",
@@ -68,7 +68,7 @@ export default function ScrollNorma() {
     <section id="ROICalculator" className="w-full h-[150vh] md:h-auto bg-black overflow-clip">
       <div className={`w-full ] ${translateValue} scale-150 md:scale-80 -mt-[50%] md:-mt-0`}>
         <MacbookScroll
-          src="/assets/img/ScrollNorma/Norma_ROI.png"
+          src="/assets/img/ScrollNorma/NormaDisplay.png"
           title={
             <span className="md:block text-[30px] leading-[24px] tracking-[1%] md:text-[40px] md:leading-[44px] md:tracking-[1%] text-[#FFFFFF] mx-auto text-center">
               Calculate Your Norma ROI

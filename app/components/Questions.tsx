@@ -44,7 +44,7 @@ export default function Questions(){
 
 
             {/* LOGO */}
-            <div className="w-[25%] md:w-[10.606%] aspect-square overflow-hidden -translate-x-[30%] md:-translate-x-0 translate-y-[14.29%] ">
+            <div className="w-[25%] md:w-[10.606%] aspect-square overflow-hidden -translate-x-[30%] md:translate-x-[20%] translate-y-[14.29%] ">
 
                 <img src="/assets/img/logo/logo.png" alt="logo" className="w-full h-full object-cover scale-200" />
 
@@ -52,7 +52,7 @@ export default function Questions(){
 
 
             {/* Content Container */}
-            <div className="w-full flex items-start flex-wrap md:flex-nowrap md:gap-[10.31%] md:ml-[2.95%] pb-[10%] md:pb-[13.79%]">
+            <div className="w-full flex items-start flex-wrap md:flex-nowrap md:gap-[10.31%] md:ml-[0.95%] pb-[10%] md:mt-[2%] md:pb-[13.79%]">
 
                 <h2 className="w-[40.53%] mr-auto md:mr-0 md:mx-auto md:mx-0 text-[20px] leading-[24px] tracking-[-0.36px] md:text-[36px] md:leading-[39.6px] md:tracking-[-0.36px] text-[#FFFFFFE5] lg:w-[21.9%] md:w-[20.9848%]">Frequently Asked  Questions</h2>
 

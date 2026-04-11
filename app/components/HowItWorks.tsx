@@ -161,6 +161,7 @@ export default function HowItWorks() {
 
   return (
     <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen overflow-hidden">
+      
       <div className="hidden w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[71.43%]">
         <div
           className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"

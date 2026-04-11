@@ -22,10 +22,12 @@ export default function ExperienceNorma() {
         },
       });
 
-      tl.from(mobileRef.current, {
+      tl.from(
+        mobileRef.current, {
         yPercent: 80,
-        ease: "sine.out",
-      });
+        ease: "sine.out"
+      }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -47,21 +49,33 @@ export default function ExperienceNorma() {
         </p>
       </div>
 
-      <div className="relative w-[55.47%] md:w-[25.56%] aspect-[368/705] mx-auto overflow-hidden">
+      <div className="relative w-[55.47%] md:w-[24.56%] md:mt-[2%] aspect-[368/705] mx-auto overflow-hidden">
         <img
           ref={mobileRef}
           src="/assets/img/ExperienceNorma/mobileImage.png"
           alt="mobile image"
           className="w-full h-full object-cover"
         />
-        <div
-                className="w-full md:hidden absolute bottom-0 left-0 h-[80%] translate-y-[75%]  md:aspect-1440/240  blur-[8px] bg-black border-b-1 border-black"
-                />
+        {/* <div
+          className="w-full  absolute bottom-0 left-0 h-[80%] translate-y-[60%]  md:aspect-1440/240  blur-[8px] bg-black border-b-1 border-black"
+        /> */}
 
       </div>
-                <div
-                className="w-full md:hidden absolute bottom-0 left-0  md:aspect-1440/240 translate-y-[80%] blur-[20px] bg-black"
-                />
+      {/* <div
+        className="w-full absolute bottom-0 left-0  md:aspect-1440/240 translate-y-[80%] blur-[20px] bg-black"
+      />*/}
+
+      {/* Overlay blur shaders */}
+      <div className=" w-full absolute bottom-0 left-0 h-[60%] translate-y-[62%] md:translate-y-[90%]">
+        <div
+          className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+          style={{
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+          }}
+        />
+      </div>
+
 
 
     </section>

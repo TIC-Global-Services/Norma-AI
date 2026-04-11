@@ -61,15 +61,15 @@ export default function AboutNorma(){
                 <div  ref={containerRef} className="w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]">
 
                     {/* LOGO */}
-                    <div className="w-[20%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[3.79%] ">
+                    <div className="w-[20%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[1.79%] ">
 
                         <img src="/assets/img/logo/logo.png" alt="logo" className="w-full h-full object-cover scale-300 md:scale-200" />
 
                     </div>
 
-                    <div className="w-full py-[11.12%] md:py-0 md:pt-0 px-5 md:px-0 md:pl-[5.30%] md:pr-[8.48%]">
+                    <div className="w-full py-[11.12%] md:py-0 md:pt-0 px-5 md:px-0 md:pl-[3.30%] md:pr-[8.48%]">
 
-                        <h2 className="textStyle  text-[25px] md:text-[54px] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF] text-left break-words whitespace-normal">
+                        <h2 className="textStyle  text-[25px] md:text-[54px] leading-[120%] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF] text-left break-words whitespace-normal">
                             Healthcare doesn't need more software. <br />
                             It needs less friction. <br />
                             It needs systems that work seamlessly where people already are. <br />

@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,10 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
 
-    const [textOpacity, setTextOpacity] = useState<boolean>(true);
-
     let containerRef2 = useRef(null);
     let containerRef = useRef(null);
+    let scrollTextRef = useRef(null);
 
     useEffect(() => {
 
@@ -34,14 +33,18 @@ export default function Hero() {
                 start: "top top",
                 scrub: true,
                 pin: false,
-                onUpdate: (self) => {
-                    const p = self.progress;
-                    if (p > 0.15) {
-                        setTextOpacity(false)
-                    } else {
-                        setTextOpacity(true)
-                    }
-                }
+            }
+        })
+
+        // Scroll text
+        gsap.to(scrollTextRef.current, {
+            opacity: 0,
+            y: -40,
+            scrollTrigger: {
+                trigger: scrollTextRef.current,
+                start: "top 0%",
+                end: "top 40%",
+                scrub: true,
             }
         })
 
@@ -66,7 +69,7 @@ export default function Hero() {
 
             </div>
 
-            {/* Remaining Header content */}
+            {/* Header content */}
 
             <div className="absolute z-20 top-[22%] md:top-[20.36%] lg:top-[18%] xl:top-[20.36%] left-0 w-full flex flex-col justify-center items-center ">
 
@@ -84,8 +87,8 @@ export default function Hero() {
 
             </div>
 
-            {/* Bottom scroll text + icon */}
-            <div className={`${textOpacity ? '' : 'opacity-0 transition-opacity'} absolute z-30 w-full md:w-auto bottom-[15%] flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[20%] xl:bottom-[15.69%] `}>
+            {/* Bottom scroll */}
+            <div ref={scrollTextRef} className="absolute z-[1000] w-full md:w-auto bottom-[15%] flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[20%] xl:bottom-[18%]">
 
                 <p className="md:text-[16px] md:leading-[16px] md:tracking-[-0.16px] text-[#FFFFFF]">Scroll to explore Norma</p>
 
@@ -95,7 +98,7 @@ export default function Hero() {
             </div>
 
             {/* Overlay blur shaders */}
-            <div className=" w-full absolute bottom-0 left-0 h-[100%] translate-y-[88%] md:translate-y-[84%] xl:translate-y-[90%] z-50">
+            <div className=" w-full hidden md:block absolute bottom-0 left-0 h-full translate-y-[95%] md:translate-y-[84%] xl:translate-y-[90%] z-[999]">
                 <div
                     className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
                     style={{

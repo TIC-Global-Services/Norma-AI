@@ -57,8 +57,7 @@ export default function AboutNorma(){
 
             <ContainerLayout>
 
-
-                <div  ref={containerRef} className="w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]">
+                <div ref={containerRef} className="w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]">
 
                     {/* LOGO */}
                     <div className="w-[20%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[1.79%] ">
@@ -77,7 +76,6 @@ export default function AboutNorma(){
                         </h2>
 
                         <h2 ref={secondContainerRef} className="textSecondStyle text-[25px] text-left md:text-[50px] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF66] mt-5">That's exactly what NORMA does.</h2>
-
 
                     </div>
 

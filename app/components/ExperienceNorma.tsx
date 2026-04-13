@@ -18,13 +18,13 @@ export default function ExperienceNorma() {
           pin: true,
           scrub: 1,
           start: "top top",
-          end: "+=800",
+          end: "+=1200",
         },
       });
 
       tl.from(
         mobileRef.current, {
-        yPercent: 80,
+        yPercent: 75,
         ease: "sine.out"
       }
       );
@@ -36,10 +36,10 @@ export default function ExperienceNorma() {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen pt-[16%] md:pt-[6.94%] bg-black overflow-hidden"
+      className="w-full min-h-screen pt-[16%] md:pt-[6.94%] bg-black overflow-hidden"
     >
       {/* TOP TITLE CONTENT */}
-      <div className="w-full md:w-[45.14%] text-center mx-auto px-10 md:px-0 mt-24 md:mt-0 pb-[60px] md:pb-0">
+      <div className="w-full md:w-[45.14%] text-center mx-auto px-10 md:px-0 mt-24 md:mt-0 pb-[80px]">
         <h2 className="text-[24px] md:text-[50px] leading-[36px] tracking-[0%] text-[#FFFFFF] pb-[12px] md:pb-[4.62%]">
           Experience Norma
         </h2>
@@ -49,35 +49,25 @@ export default function ExperienceNorma() {
         </p>
       </div>
 
-      <div className="relative w-[55.47%] md:w-[24.56%] md:mt-[2%] aspect-[368/705] mx-auto overflow-hidden">
+      <div className="relative w-[55.47%] md:w-[24.56%] mt-[20px] aspect-[368/705] mx-auto overflow-hidden">
         <img
           ref={mobileRef}
           src="/assets/img/ExperienceNorma/mobileImage.png"
           alt="mobile image"
           className="w-full h-full object-cover"
         />
-        {/* <div
-          className="w-full  absolute bottom-0 left-0 h-[80%] translate-y-[60%]  md:aspect-1440/240  blur-[8px] bg-black border-b-1 border-black"
-        /> */}
-
       </div>
-      {/* <div
-        className="w-full absolute bottom-0 left-0  md:aspect-1440/240 translate-y-[80%] blur-[20px] bg-black"
-      />*/}
 
       {/* Overlay blur shaders */}
-      <div className=" w-full absolute bottom-0 left-0 h-[60%] translate-y-[62%] md:translate-y-[90%]">
+      <div className="w-full absolute bottom-0 left-0 h-[65%] translate-y-[35%]">
         <div
-          className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+          className="w-full h-full bg-[#000000]"
           style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 25%, black 60%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 25%, black 60%, transparent 100%)",
           }}
         />
       </div>
-
-
-
     </section>
   );
 }

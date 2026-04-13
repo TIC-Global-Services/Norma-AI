@@ -85,7 +85,7 @@ export default function Hero() {
             </div>
 
             {/* Bottom scroll text + icon */}
-            <div className={`${textOpacity ? '' : 'opacity-0 transition-opacity'} absolute z-30 w-full md:w-auto bottom-[15%] flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[25.69%] `}>
+            <div className={`${textOpacity ? '' : 'opacity-0 transition-opacity'} absolute z-30 w-full md:w-auto bottom-[15%] flex flex-col items-center gap-5 md:left-[44.375%] md:bottom-[20%] xl:bottom-[15.69%] `}>
 
                 <p className="md:text-[16px] md:leading-[16px] md:tracking-[-0.16px] text-[#FFFFFF]">Scroll to explore Norma</p>
 
@@ -95,7 +95,7 @@ export default function Hero() {
             </div>
 
             {/* Overlay blur shaders */}
-            <div className=" w-full absolute bottom-0 left-0 h-[60%] translate-y-[88%] md:translate-y-[70%] z-50">
+            <div className=" w-full absolute bottom-0 left-0 h-[100%] translate-y-[88%] md:translate-y-[84%] xl:translate-y-[90%] z-50">
                 <div
                     className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
                     style={{

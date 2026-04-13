@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { JSX } from "react";
 import { useState, useEffect, useRef } from "react";
-import Shaders from "./Reusable/Shaders";
 
 type dataIndex = 0 | 1 | 2;
 

@@ -4,8 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef, useState } from "react";
 
-import Shaders from "./Reusable/Shaders"
-import { Parallax } from "react-scroll-parallax"
 
 gsap.registerPlugin(ScrollTrigger);
 

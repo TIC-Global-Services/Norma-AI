@@ -7,24 +7,48 @@ export default function Questions(){
 
     const data = [
         { 
-            question:"Can you do insurance checks on the calls?",
-            answer:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            question:"What is Norma?",
+            answer:"Norma is an AI-powered patient coordinator that works on WhatsApp and voice. She handles appointment bookings, reminders, cancellations, and patient queries 24/7, without any human intervention. Think of her as a receptionist who never sleeps, never forgets, and handles 200+ patient interactions a day."
         },
         {
-            question:"Can you collect debt & handle payment plans?",
-            answer:"Automated reminders, real-time balance tracking, and escalation workflows streamline recovery, while configurable repayment options allow installments, custom schedules, or partial payments. Recovery stays systematic, and repayment stays organized."
+            question:"Do patients need to download an app?",
+            answer:"No. Norma works entirely on WhatsApp, which patients already have. Zero friction, zero onboarding for patients."
         },
         {
-            question:"Can you work with my existing phone line & number?",
-            answer:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            question:"Will Norma replace my front desk staff?",
+            answer:"No. Norma handles the repetitive, high-volume tasks so your staff can focus on what actually requires a human. Most clinics see their admin workload drop by over an hour per day."
         },
         {
-            question:"How cost-effective is it compared to hiring staff?",
-            answer:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            question:"Is patient data safe?",
+            answer:"Yes. Norma uses AES-256 encryption and a PHI Guard that anonymizes all patient data before it reaches the AI layer. Patient information is never exposed to the LLM. We are designed with HIPAA, NABH, and DHA compliance principles in mind."
         },
         {
-            question:"Is the AI available 24/7?",
-            answer:"yeLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            question:"What happens if a patient has an emergency?",
+            answer:"Norma has a deterministic emergency gate, if a patient mentions anything that signals a medical emergency, she immediately bypasses the AI and directs them to emergency services while alerting the clinic. This is hardcoded, not AI-dependent."
+        },
+        {
+            question:"Does Norma connect to your existing HMS/EMR?",
+            answer:"Yes. Norma integrates directly with your hospital management system for real-time appointment availability, patient records, and billing. She never books a slot that doesn't exist and never gives outdated information."
+        },
+        {
+            question:"How long does it take to go live?",
+            answer:"Most clinics are live within 48 hours of onboarding. No IT team required. No complex setup."
+        },
+        {
+            question:"What languages does Norma speak?",
+            answer:"Norma supports multiple languages including English, Hindi, and Arabic, with more on the way. She auto-detects the patient's language and responds accordingly."
+        },
+        {
+            question:"Is Norma just a WhatsApp bot?",
+            answer:"No. A bot responds to keywords. Norma understands intent, remembers every patient across sessions, handles multi-turn conversations, and escalates intelligently when something is beyond her scope. The difference: a bot answers. Norma understands."
+        },
+        {
+            question:"What if Norma makes a mistake?",
+            answer:"Every response is grounded in real data from your HMS through an Evidence Ledger, she doesn't guess. If she doesn't have the information, she says so. For any action with serious consequences, she always asks for explicit confirmation first."
+        },
+        {
+            question:"Can doctors use Norma too?",
+            answer:"Yes. Norma has a separate doctor-facing layer with 23 specialized tools, from encounter notes to calendar sync to billing. Doctors can query their schedule, manage appointments, and handle admin tasks via WhatsApp in seconds."
         },
     ]
 

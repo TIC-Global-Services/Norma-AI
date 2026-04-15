@@ -160,10 +160,9 @@ export default function LoadingScreen({
                 fontWeight="400"
                 fill="white"
                 letterSpacing="6"
-                fontFamily="font-aeonik"
                 dominantBaseline="middle"
               >
-                Norma Ai
+                Norma AI
               </text>
             </mask>
           </defs>

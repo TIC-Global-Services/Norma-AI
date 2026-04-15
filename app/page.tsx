@@ -7,20 +7,23 @@ import NormaCore from "./components/NormCore"
 import ScrollNorma from "./components/ScrollNorma"
 import Questions from "./components/Questions"
 import Footer from "./components/Footer"
+import PageWrapper from "./components/PageWrapper"
 
 export default function Home(){
 
     return(
-        <div className="w-full overflow-hidden relative bg-black">
-            <Navbar />
-            <Hero />
-            <AboutNorma />
-            <HowItWorks />
-            <ExperienceNorma />
-            <NormaCore />
-            <ScrollNorma />
-            <Questions />
-            <Footer />
-        </div>
+        <PageWrapper>
+            <div className="w-full overflow-hidden relative bg-black">
+                <Navbar />
+                <Hero />
+                <AboutNorma />
+                <HowItWorks />
+                <ExperienceNorma />
+                <NormaCore />
+                <ScrollNorma />
+                <Questions />
+                <Footer />
+            </div>
+        </PageWrapper>
     )
 }

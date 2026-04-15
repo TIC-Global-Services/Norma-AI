@@ -3,379 +3,133 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-interface LoadingScreenProps {
-  onComplete?: () => void;
-}
-
-export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
+export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoCubeRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const progressTextRef = useRef<HTMLSpanElement>(null);
-  const ring1Ref = useRef<HTMLDivElement>(null);
-  const ring2Ref = useRef<HTMLDivElement>(null);
-  const ring3Ref = useRef<HTMLDivElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const purpleGroupRef = useRef<SVGGElement>(null);
   const [progress, setProgress] = useState(0);
 
+  // Prevent body scroll
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Initial setup
-      gsap.set(logoCubeRef.current, {
-        rotateX: -20,
-        rotateY: 45,
-        scale: 0.5,
-        opacity: 0,
-      });
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
-      // Animate logo cube entrance
-      gsap.to(logoCubeRef.current, {
-        rotateX: 0,
-        rotateY: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 1.2,
-        ease: "back.out(1.7)",
-        delay: 0.3,
-      });
+  // Animations
+  useEffect(() => {
+    const purpleGroup = purpleGroupRef.current;
+    if (!textRef.current || !purpleGroup) return;
 
-      // Continuous rotation animation
-      gsap.to(logoCubeRef.current, {
-        rotateY: 360,
-        duration: 8,
-        repeat: -1,
-        ease: "none",
-      });
+    gsap.set(purpleGroup, {
+      scaleY: 0,
+      transformOrigin: "bottom center",
+    });
 
-      // Ring animations
-      const rings = [ring1Ref.current, ring2Ref.current, ring3Ref.current];
-      rings.forEach((ring, i) => {
-        gsap.set(ring, { opacity: 0, scale: 0.8 });
-        gsap.to(ring, {
-          opacity: 0.6 - i * 0.15,
-          scale: 1,
-          duration: 0.8,
-          delay: 0.5 + i * 0.2,
-          ease: "power2.out",
-        });
-
-        // Continuous rotation for rings
-        gsap.to(ring, {
-          rotateZ: i % 2 === 0 ? 360 : -360,
-          duration: 10 + i * 2,
-          repeat: -1,
-          ease: "none",
-        });
-      });
-
-      // Particle animation
-      const particles = particlesRef.current?.children;
-      if (particles) {
-        Array.from(particles).forEach((particle, i) => {
-          gsap.set(particle, {
-            opacity: 0,
-            scale: 0,
-            x: Math.random() * 200 - 100,
-            y: Math.random() * 200 - 100,
-            z: Math.random() * 200 - 100,
+    // Text wave fill
+    gsap.fromTo(
+      textRef.current,
+      { backgroundPosition: "0% 100%" },
+      {
+        backgroundPosition: "0% 0%",
+        duration: 2.2,
+        ease: "power2.inOut",
+        onComplete: () => {
+          gsap.to(purpleGroup, {
+            scaleY: 1,
+            duration: 0.8,
+            ease: "power2.inOut",
+            onComplete: () => {
+              gsap.to(containerRef.current, {
+                opacity: 0,
+                scale: 1.05,
+                duration: 0.6,
+                ease: "power2.inOut",
+                onComplete: onComplete,
+              });
+            },
           });
-
-          gsap.to(particle, {
-            opacity: Math.random() * 0.5 + 0.2,
-            scale: Math.random() * 0.5 + 0.5,
-            duration: 1,
-            delay: i * 0.05,
-            ease: "power2.out",
-          });
-
-          // Float animation
-          gsap.to(particle, {
-            y: "-=30",
-            x: "+=20",
-            duration: 2 + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: i * 0.1,
-          });
-        });
+        },
       }
+    );
 
-      // Progress bar animation
-      gsap.fromTo(
-        progressRef.current,
-        { width: "0%" },
-        {
-          width: "100%",
-          duration: 2.5,
-          ease: "power2.inOut",
-          onUpdate: function () {
-            const currentProgress = Math.round(this.progress() * 100);
-            setProgress(currentProgress);
-          },
-          onComplete: () => {
-            // Exit animation
-            gsap.to(containerRef.current, {
-              opacity: 0,
-              scale: 1.1,
-              duration: 0.8,
-              ease: "power2.inOut",
-              onComplete: () => {
-                if (onComplete) onComplete();
-              },
-            });
-          },
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
+    // Progress counter
+    gsap.to({ val: 0 }, {
+      val: 100,
+      duration: 2.5,
+      ease: "linear",
+      onUpdate: function () {
+        setProgress(Math.floor(this.targets()[0].val));
+      },
+    });
   }, [onComplete]);
-
-  // Generate particles
-  const particles = Array.from({ length: 20 }, (_, i) => (
-    <div
-      key={i}
-      className="absolute w-1 h-1 bg-white/40 rounded-full"
-      style={{
-        left: "50%",
-        top: "50%",
-        transform: `translate3d(${(Math.random() - 0.5) * 300}px, ${
-          (Math.random() - 0.5) * 300
-        }px, ${(Math.random() - 0.5) * 200}px)`,
-      }}
-    />
-  ));
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black overflow-hidden"
-      style={{ perspective: "1000px" }}
+      className="fixed inset-0 bg-black flex items-center justify-center z-[9999] overflow-hidden"
     >
-      {/* Animated gradient background */}
-      <div className="absolute inset-0">
+      <div className="flex flex-col items-center justify-center px-4">
+        {/* Logo container */}
+        <div className="mb-4 md:mb-8 flex items-center justify-center">
+          <svg
+            ref={svgRef}
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="450 400 180 180"
+            className="w-32 sm:w-48 md:w-64 lg:w-80 h-auto"
+          >
+            {/* White version */}
+            <g fill="#ffffff" stroke="none">
+              <path d="M564.3,430c0-.3,0-.5-.2-.8s-2.8-1.6-3.3-1.5c-20.1,9.6-35,27.9-40.3,49.6-8.2,33,6.5,69.9,37.2,85.3s2.7,1.4,3.2,1.4,2.9-1.1,3.1-1.3.2-.5.2-.8c-4.5-1.7-8.8-4.2-12.7-6.9-36.8-26-40.1-81.1-7.3-111.8,5.8-5.4,12.6-10,19.9-13.1ZM561.3,442.5c3.2-3,6.8-5.6,10.6-7.9v-.5s-2.8-1.8-2.8-1.8c-11.8,7.7-21.9,19.2-27.6,32.2-14.4,32.4-4.8,72.9,24.5,93.2.5.3,2.9,2,3.2,1.9l2.8-1.6c0-.2,0-.4,0-.5-.2-.2-2.6-1.6-3.1-1.9-37.8-25.7-40.9-82.2-7.5-113ZM578.5,441.8c.4-.3,1.2-.7,1.2-1.2s-1.5-1.8-1.7-1.9-.5-.2-.9-.1c-.6.2-5.2,4.9-6,5.7-27,29.3-26.6,75.9,1,104.7,1.1,1.2,2.6,2.7,3.9,3.7s1,.9,1.6.9,2.5-1.8,2-2.3c-9.1-7.7-16.2-18-20.4-29.2-10.6-28.5-2.9-59.8,19.3-80.1ZM585.9,545c.3-.9,1.9-1.7,1.6-2.7-20.8-24.9-21.9-61.6-3.5-88.2,1.1-1.6,2.4-3.1,3.6-4.7.3-.6-1.6-2.7-2-2.7s-2.3,2.6-2.7,3.1c-20.3,27.3-20.7,65.9.4,92.8.4.5,2,2.8,2.7,2.4ZM594,533.3c.2,0,1.7-3,1.6-3.4-11.3-20.8-11.2-47,0-67.9,0-.6-.4-1.4-.7-2s-.8-1.6-1.4-1.5c-10.2,18.1-12.5,40-6.5,59.9s3.9,10.2,6.4,15c.2,0,.4,0,.5,0ZM602.1,480.2c-.3-.3-.7,1.6-.7,1.7-1.5,8.3-1.5,18.6-.2,27s.4,2.5.8,2.5c.3-.2.2-.5.3-.8,1.8-8,1.8-17.3.7-25.4-.2-1.6-.7-3.3-.9-4.9Z"/>
+              <path d="M557.3,426.1l-.5.6c-37.5,10.9-58.3,48.6-49.6,86.6,5.2,22.7,21.9,42,43.8,50,1.8.7,4,1.1,5.8,1.8s.3.2.5.4c0,.5-3.8,1.7-4.4,1.8-1.5.4-2.2.8-3.6,1.2-16,5.2-37.6,3.1-52.8-3.7-52.2-23.3-59.9-96.2-13.7-129.9,20.3-14.8,47.1-18.3,70.8-10.3,1.3.4,2.5,1,3.7,1.4ZM518.8,424.5c-7,.6-14.2,2.7-20.7,5.5-50.9,22.2-57.3,93.9-11.8,125.2,8,5.5,21.3,11.5,31,12.1.2,0,2,.1,1.5-.4-17.9-5.8-32.8-18.9-41.4-35.5s-11.4-46.6-1.7-67.8c7.5-16.3,21.7-30.2,38.2-37.2,1.3-.5,2.8-.9,4-1.4s.8-.5.8-.7ZM534.9,424.7c-4.4.2-8.9,1.3-13.1,2.6-24.1,7.5-42.7,28.1-47.9,52.7-8.2,38.9,14.2,76.9,53.1,86.1,1.1.3,7.7,1.7,8.3,1.3,0-.1,0-.2-.2-.3-1.4-.9-5.1-1.9-6.9-2.7-39-18-53.9-66.3-34.1-104.2,7.7-14.7,21.8-27.8,37.3-34s1.9-.5,2.7-.9.8-.5.8-.7ZM551,424.7c-4.9.4-10,1.6-14.6,3.2-54.6,18.8-64.7,93.6-17.9,127,8,5.7,21.3,11.5,31.2,12.3s1,0,1.5,0c0-.2-.2-.4-.4-.4-1.6-.8-3.9-1.4-5.7-2.2-33.2-14.9-49.6-51.8-41.2-87,5.4-22.7,21.3-41.2,42.4-50.7,1.6-.7,3.4-1.1,4.7-2.2Z"/>
+              <path d="M564.3,430c-7.4,3-14.1,7.7-19.9,13.1-32.8,30.7-29.5,85.8,7.3,111.8,3.9,2.8,8.2,5.2,12.7,6.9,0,.3,0,.6-.2.8s-2.7,1.4-3.1,1.3c-.6,0-2.6-1.1-3.2-1.4-30.7-15.4-45.4-52.3-37.2-85.3,5.4-21.6,20.3-40,40.3-49.6.5,0,3,1.2,3.3,1.5s.2.5.2.8Z"/>
+              <path d="M561.3,442.5c-33.4,30.7-30.3,87.2,7.5,113,.5.3,2.9,1.7,3.1,1.9s.1.4,0,.5l-2.8,1.6c-.4,0-2.7-1.6-3.2-1.9-29.4-20.3-39-60.8-24.5-93.2,5.8-13,15.8-24.4,27.6-32.2l2.8,1.8v.5c-3.8,2.3-7.3,5-10.6,7.9Z"/>
+              <path d="M578.5,441.8c-22.2,20.3-29.9,51.7-19.3,80.1,4.2,11.2,11.4,21.4,20.4,29.2.6.5-1.8,2.3-2,2.3-.6,0-1.1-.5-1.6-.9-1.2-1-2.7-2.5-3.9-3.7-27.6-28.8-28-75.4-1-104.7.8-.8,5.3-5.5,6-5.7s.6,0,.9.1,1.7,1.7,1.7,1.9c0,.6-.8.9-1.2,1.2Z"/>
+              <path d="M585.9,545c-.7.4-2.2-1.9-2.7-2.4-21.1-27-20.7-65.6-.4-92.8s2.3-3.1,2.7-3.1,2.3,2.1,2,2.7c-1.2,1.6-2.4,3.1-3.6,4.7-18.4,26.6-17.3,63.3,3.5,88.2.3,1-1.3,1.8-1.6,2.7Z"/>
+              <path d="M594,533.3c-.1,0-.3,0-.5,0-2.5-4.8-4.8-9.8-6.4-15-6-19.9-3.7-41.8,6.5-59.9.6-.1,1.1,1,1.4,1.5s.7,1.4.7,2c-11.2,20.9-11.3,47,0,67.9.1.5-1.5,3.3-1.6,3.4Z"/>
+              <path d="M602.1,480.2c.2,1.6.7,3.4.9,4.9,1.1,8.1,1.1,17.4-.7,25.4s0,.6-.3.8c-.3,0-.7-2.1-.8-2.5-1.4-8.3-1.4-18.6.2-27,0-.2.3-2,.7-1.7Z"/>
+            </g>
+
+            {/* Purple version */}
+            <g ref={purpleGroupRef} fill="#552DF6" stroke="none">
+              <path d="M564.3,430c0-.3,0-.5-.2-.8s-2.8-1.6-3.3-1.5c-20.1,9.6-35,27.9-40.3,49.6-8.2,33,6.5,69.9,37.2,85.3s2.7,1.4,3.2,1.4,2.9-1.1,3.1-1.3.2-.5.2-.8c-4.5-1.7-8.8-4.2-12.7-6.9-36.8-26-40.1-81.1-7.3-111.8,5.8-5.4,12.6-10,19.9-13.1ZM561.3,442.5c3.2-3,6.8-5.6,10.6-7.9v-.5s-2.8-1.8-2.8-1.8c-11.8,7.7-21.9,19.2-27.6,32.2-14.4,32.4-4.8,72.9,24.5,93.2.5.3,2.9,2,3.2,1.9l2.8-1.6c0-.2,0-.4,0-.5-.2-.2-2.6-1.6-3.1-1.9-37.8-25.7-40.9-82.2-7.5-113ZM578.5,441.8c.4-.3,1.2-.7,1.2-1.2s-1.5-1.8-1.7-1.9-.5-.2-.9-.1c-.6.2-5.2,4.9-6,5.7-27,29.3-26.6,75.9,1,104.7,1.1,1.2,2.6,2.7,3.9,3.7s1,.9,1.6.9,2.5-1.8,2-2.3c-9.1-7.7-16.2-18-20.4-29.2-10.6-28.5-2.9-59.8,19.3-80.1ZM585.9,545c.3-.9,1.9-1.7,1.6-2.7-20.8-24.9-21.9-61.6-3.5-88.2,1.1-1.6,2.4-3.1,3.6-4.7.3-.6-1.6-2.7-2-2.7s-2.3,2.6-2.7,3.1c-20.3,27.3-20.7,65.9.4,92.8.4.5,2,2.8,2.7,2.4ZM594,533.3c.2,0,1.7-3,1.6-3.4-11.3-20.8-11.2-47,0-67.9,0-.6-.4-1.4-.7-2s-.8-1.6-1.4-1.5c-10.2,18.1-12.5,40-6.5,59.9s3.9,10.2,6.4,15c.2,0,.4,0,.5,0ZM602.1,480.2c-.3-.3-.7,1.6-.7,1.7-1.5,8.3-1.5,18.6-.2,27s.4,2.5.8,2.5c.3-.2.2-.5.3-.8,1.8-8,1.8-17.3.7-25.4-.2-1.6-.7-3.3-.9-4.9Z"/>
+              <path d="M557.3,426.1l-.5.6c-37.5,10.9-58.3,48.6-49.6,86.6,5.2,22.7,21.9,42,43.8,50,1.8.7,4,1.1,5.8,1.8s.3.2.5.4c0,.5-3.8,1.7-4.4,1.8-1.5.4-2.2.8-3.6,1.2-16,5.2-37.6,3.1-52.8-3.7-52.2-23.3-59.9-96.2-13.7-129.9,20.3-14.8,47.1-18.3,70.8-10.3,1.3.4,2.5,1,3.7,1.4ZM518.8,424.5c-7,.6-14.2,2.7-20.7,5.5-50.9,22.2-57.3,93.9-11.8,125.2,8,5.5,21.3,11.5,31,12.1.2,0,2,.1,1.5-.4-17.9-5.8-32.8-18.9-41.4-35.5s-11.4-46.6-1.7-67.8c7.5-16.3,21.7-30.2,38.2-37.2,1.3-.5,2.8-.9,4-1.4s.8-.5.8-.7ZM534.9,424.7c-4.4.2-8.9,1.3-13.1,2.6-24.1,7.5-42.7,28.1-47.9,52.7-8.2,38.9,14.2,76.9,53.1,86.1,1.1.3,7.7,1.7,8.3,1.3,0-.1,0-.2-.2-.3-1.4-.9-5.1-1.9-6.9-2.7-39-18-53.9-66.3-34.1-104.2,7.7-14.7,21.8-27.8,37.3-34s1.9-.5,2.7-.9.8-.5.8-.7ZM551,424.7c-4.9.4-10,1.6-14.6,3.2-54.6,18.8-64.7,93.6-17.9,127,8,5.7,21.3,11.5,31.2,12.3s1,0,1.5,0c0-.2-.2-.4-.4-.4-1.6-.8-3.9-1.4-5.7-2.2-33.2-14.9-49.6-51.8-41.2-87,5.4-22.7,21.3-41.2,42.4-50.7,1.6-.7,3.4-1.1,4.7-2.2Z"/>
+              <path d="M564.3,430c-7.4,3-14.1,7.7-19.9,13.1-32.8,30.7-29.5,85.8,7.3,111.8,3.9,2.8,8.2,5.2,12.7,6.9,0,.3,0,.6-.2.8s-2.7,1.4-3.1,1.3c-.6,0-2.6-1.1-3.2-1.4-30.7-15.4-45.4-52.3-37.2-85.3,5.4-21.6,20.3-40,40.3-49.6.5,0,3,1.2,3.3,1.5s.2.5.2.8Z"/>
+              <path d="M561.3,442.5c-33.4,30.7-30.3,87.2,7.5,113,.5.3,2.9,1.7,3.1,1.9s.1.4,0,.5l-2.8,1.6c-.4,0-2.7-1.6-3.2-1.9-29.4-20.3-39-60.8-24.5-93.2,5.8-13,15.8-24.4,27.6-32.2l2.8,1.8v.5c-3.8,2.3-7.3,5-10.6,7.9Z"/>
+              <path d="M578.5,441.8c-22.2,20.3-29.9,51.7-19.3,80.1,4.2,11.2,11.4,21.4,20.4,29.2.6.5-1.8,2.3-2,2.3-.6,0-1.1-.5-1.6-.9-1.2-1-2.7-2.5-3.9-3.7-27.6-28.8-28-75.4-1-104.7.8-.8,5.3-5.5,6-5.7s.6,0,.9.1,1.7,1.7,1.7,1.9c0,.6-.8.9-1.2,1.2Z"/>
+              <path d="M585.9,545c-.7.4-2.2-1.9-2.7-2.4-21.1-27-20.7-65.6-.4-92.8s2.3-3.1,2.7-3.1,2.3,2.1,2,2.7c-1.2,1.6-2.4,3.1-3.6,4.7-18.4,26.6-17.3,63.3,3.5,88.2.3,1-1.3,1.8-1.6,2.7Z"/>
+              <path d="M594,533.3c-.1,0-.3,0-.5,0-2.5-4.8-4.8-9.8-6.4-15-6-19.9-3.7-41.8,6.5-59.9.6-.1,1.1,1,1.4,1.5s.7,1.4.7,2c-11.2,20.9-11.3,47,0,67.9.1.5-1.5,3.3-1.6,3.4Z"/>
+              <path d="M602.1,480.2c.2,1.6.7,3.4.9,4.9,1.1,8.1,1.1,17.4-.7,25.4s0,.6-.3.8c-.3,0-.7-2.1-.8-2.5-1.4-8.3-1.4-18.6.2-27,0-.2.3-2,.7-1.7Z"/>
+            </g>
+          </svg>
+        </div>
+
+        {/* Center Text */}
         <div
-          className="absolute inset-0 opacity-30"
+          ref={textRef}
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold tracking-[0.2em] mb-2 sm:mb-4 text-center px-2"
           style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(147, 51, 234, 0.3) 0%, transparent 60%)",
+            background: "repeating-linear-gradient(45deg, #552DF6 0px, #552DF6 12px, white 12px, white 24px)",
+            backgroundSize: "100% 200%",
+            backgroundPosition: "0% 100%",
+            backgroundRepeat: "repeat",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
-        />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)",
-          }}
-        />
-      </div>
-
-      {/* Grid floor effect */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-1/2 opacity-10"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-          transform: "rotateX(60deg) translateY(-50%)",
-          transformOrigin: "center bottom",
-        }}
-      />
-
-      {/* Main 3D container */}
-      <div
-        className="relative w-40 h-40 mb-12"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Orbiting rings */}
-        <div
-          ref={ring1Ref}
-          className="absolute inset-0 border border-white/20 rounded-full"
-          style={{
-            transform: "rotateX(70deg) scale(2)",
-            boxShadow: "0 0 30px rgba(147, 51, 234, 0.3)",
-          }}
-        />
-        <div
-          ref={ring2Ref}
-          className="absolute inset-0 border border-white/15 rounded-full"
-          style={{
-            transform: "rotateY(70deg) scale(1.6)",
-            boxShadow: "0 0 20px rgba(59, 130, 246, 0.3)",
-          }}
-        />
-        <div
-          ref={ring3Ref}
-          className="absolute inset-0 border border-white/10 rounded-full"
-          style={{
-            transform: "rotateX(-70deg) scale(2.4)",
-            boxShadow: "0 0 40px rgba(236, 72, 153, 0.2)",
-          }}
-        />
-
-        {/* 3D Logo Cube */}
-<div
-  ref={logoCubeRef}
-  className="absolute inset-0 flex items-center justify-center"
-  style={{
-    transformStyle: "preserve-3d",
-    transform: "rotateX(-20deg) rotateY(45deg)",
-  }}
->
-  {/* Front */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "translateZ(32px)",
-      background: "rgba(10, 10, 10, 0.6)",
-      border: "1px solid rgba(255, 255, 255, 0.2)",
-      backdropFilter: "blur(6px)",
-      boxShadow: "0 0 30px rgba(85, 45, 246, 0.6)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      alt="Norma Logo"
-      className="w-40 h-40 object-contain"
-      style={{
-        filter: "drop-shadow(0 0 10px #552df6)",
-      }}
-    />
-  </div>
-
-  {/* Back */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "translateZ(-32px) rotateY(180deg)",
-      background: "rgba(10, 10, 10, 0.4)",
-      border: "1px solid rgba(255, 255, 255, 0.1)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      className="w-40 h-40 opacity-40"
-    />
-  </div>
-
-  {/* Right */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "rotateY(90deg) translateZ(32px)",
-      background: "rgba(10, 10, 10, 0.4)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      className="w-40 h-40 opacity-60"
-    />
-  </div>
-
-  {/* Left */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "rotateY(-90deg) translateZ(32px)",
-      background: "rgba(10, 10, 10, 0.4)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      className="w-40 h-40 opacity-60"
-    />
-  </div>
-
-  {/* Top */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "rotateX(90deg) translateZ(32px)",
-      background: "rgba(10, 10, 10, 0.3)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      className="w-40 h-40 opacity-40"
-    />
-  </div>
-
-  {/* Bottom */}
-  <div
-    className="absolute w-16 h-16 flex items-center justify-center"
-    style={{
-      transform: "rotateX(-90deg) translateZ(32px)",
-      background: "rgba(10, 10, 10, 0.3)",
-    }}
-  >
-    <img
-      src="/assets/img/logo/Normalogo.svg"
-      className="w-40 h-40 opacity-30"
-    />
-  </div>
-
-  {/* Inner glow */}
-  <div
-    className="absolute w-8 h-8 rounded-full"
-    style={{
-      transform: "translateZ(0)",
-      background:
-        "radial-gradient(circle, rgba(85, 45, 246, 0.9) 0%, transparent 70%)",
-      boxShadow: "0 0 40px rgba(85, 45, 246, 0.8)",
-    }}
-  />
-</div>
-
-        {/* Floating particles */}
-        <div
-          ref={particlesRef}
-          className="absolute inset-0"
-          style={{ transformStyle: "preserve-3d" }}
         >
-          {particles}
+          NORMA AI
+        </div>
+
+        {/* Loading text */}
+        <div className="text-white/70 text-xs sm:text-sm font-mono tracking-wider">
+          loading...{progress}%
         </div>
       </div>
-
-      {/* Brand text */}
-      <div className="relative mb-8 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-white tracking-wider">
-          NORMA
-        </h1>
-        <p className="text-white/50 text-sm mt-2 tracking-[0.3em] uppercase">
-          Loading Experience
-        </p>
-      </div>
-
-      {/* Progress bar */}
-      <div className="relative w-64 h-1 bg-white/10 rounded-full overflow-hidden">
-        <div
-          ref={progressRef}
-          className="absolute top-0 left-0 h-full rounded-full"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(147, 51, 234, 1), rgba(59, 130, 246, 1), rgba(236, 72, 153, 1))",
-            boxShadow: "0 0 20px rgba(147, 51, 234, 0.8)",
-            width: "0%",
-          }}
-        />
-      </div>
-
-      {/* Progress percentage */}
-      <span
-        ref={progressTextRef}
-        className="mt-4 text-white/60 text-sm font-mono"
-      >
-        {progress}%
-      </span>
-
-      {/* Corner decorations */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-white/20" />
-      <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-white/20" />
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-l border-b border-white/20" />
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-white/20" />
     </div>
   );
 }

@@ -135,62 +135,68 @@ export default function LoadingScreen({
       </svg>
 
       {/* TEXT */}
-      <svg
-        viewBox="0 0 800 160"
-        className="w-[85vw] max-w-5xl h-auto"
-        style={{ overflow: "visible" }}
-      >
-        <defs>
-          <radialGradient
-            id="textGlowGrad"
-            cx="50%" cy="0%" r="70%"
-            gradientUnits="objectBoundingBox"
-          >
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-            <stop offset="50%" stopColor="#ffffff" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-          </radialGradient>
-          <mask id="textShapeMask">
-            <text
-              x="50%" y="75%"
-              textAnchor="middle"
-              fontSize="110"
-              fontWeight="700"
-              fill="white"
-              letterSpacing="8"
-              fontFamily="sans-serif"
+      <div className="flex flex-col items-center gap-2">
+        {/* TEXT SVG */}
+        <svg
+          viewBox="0 0 800 160"
+          className="w-[85vw] max-w-4xl h-auto"
+          style={{ overflow: "visible" }}
+        >
+          <defs>
+            <radialGradient
+              id="textGlowGrad"
+              cx="50%" cy="0%" r="70%"
+              gradientUnits="objectBoundingBox"
             >
-              NORMA AI
-            </text>
-          </mask>
-        </defs>
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+            </radialGradient>
+            <mask id="textShapeMask">
+              <text
+                x="50%" y="50%"
+                textAnchor="middle"
+                fontSize="80"
+                fontWeight="400"
+                fill="white"
+                letterSpacing="6"
+                fontFamily="font-aeonik"
+                dominantBaseline="middle"
+              >
+                Norma Ai
+              </text>
+            </mask>
+          </defs>
 
-        {/* dim base */}
-        <rect
-          x="0" y="0" width="800" height="160"
-          fill="#2c2c2c"
-          mask="url(#textShapeMask)"
-        />
-        {/* travelling glow bloom */}
-        <rect
-          id="text-glow"
-          x="0" y="200" width="800" height="80"
-          fill="url(#textGlowGrad)"
-          mask="url(#textShapeMask)"
-          opacity="0"
-        />
-        {/* solid lit region */}
-        <rect
-          id="text-lit"
-          x="0" y="160" width="800" height="0"
-          fill="#552DF6"
-          mask="url(#textShapeMask)"
-        />
-      </svg>
+          {/* dim base */}
+          <rect
+            x="0" y="0" width="800" height="160"
+            fill="#2c2c2c"
+            mask="url(#textShapeMask)"
+          />
+          {/* travelling glow bloom */}
+          <rect
+            id="text-glow"
+            x="0" y="200" width="800" height="80"
+            fill="url(#textGlowGrad)"
+            mask="url(#textShapeMask)"
+            opacity="0"
+          />
+          {/* solid lit region */}
+          <rect
+            id="text-lit"
+            x="0" y="160" width="800" height="0"
+            fill="#552DF6"
+            mask="url(#textShapeMask)"
+          />
+        </svg>
 
-      {/* Loading */}
-      <div className="fixed bottom-6 right-8 text-white/90 text-xs font-mono tracking-widest">
-        loading... {progress}%
+        {/* Loading Progress */}
+        <div className="text-center">
+          <div className="text-white/60 text-sm font-mono tracking-widest">
+            loading... {progress}%
+          </div>
+        </div>
       </div>
     </div>
   );

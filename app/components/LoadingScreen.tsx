@@ -91,7 +91,7 @@ export default function LoadingScreen({
       className="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center"
     >
       {/* LOGO */}
-      <svg viewBox="450 400 180 180" className="w-32 md:w-48 mb-8">
+      <svg viewBox="450 400 180 180" className="w-32 md:w-48">
         <defs>
           <radialGradient
             id="logoGlowGrad"
@@ -159,7 +159,7 @@ export default function LoadingScreen({
                 fontSize="80"
                 fontWeight="400"
                 fill="white"
-                letterSpacing="6"
+                letterSpacing="0"
                 dominantBaseline="middle"
               >
                 Norma AI

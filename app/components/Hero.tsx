@@ -51,7 +51,7 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-auto overflow-hidden ">
+        <section className="relative w-full h-[100vh] md:h-auto md:aspect-1440/840 lg:h-auto xl:h-auto">
 
             {/* Complete BG Image */}
             <img ref={containerRef} src="/assets/img/Hero/bgImage.png" alt="bgImage" className="w-full object-cover md:object-auto h-full" />
@@ -98,13 +98,13 @@ export default function Hero() {
             </div>
 
             {/* Overlay blur shaders */}
-            <div className=" w-full hidden md:block absolute bottom-0 left-0 h-full translate-y-[95%] md:translate-y-[84%] xl:translate-y-[90%] z-[999]">
+            <div className=" w-full absolute bottom-0 left-0 translate-y-[0%] z-[9999]">
                 <div
-                    className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
-                    style={{
-                        maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
-                        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
-                    }}
+                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                }}
                 />
             </div>
 

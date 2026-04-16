@@ -51,7 +51,7 @@ export default function Footer() {
 
   return (
     <footer className="relative w-full min-h-[50vh] md:h-auto bg-[url('/assets/img/Footer/bgImage.png')] bg-cover overflow-hidden">
-      <div className="w-full absolute top-0 left-0 -translate-y-[40%] md:-translate-y-[71.43%] pointer-events-none">
+      <div className="w-full absolute top-0 left-0 -translate-y-[40%] md:-translate-y-[71.43%] xl:-translate-y-[60%] pointer-events-none z-[999]">
         <div
           className="w-full aspect-1440/140 bg-[#000000]"
           style={{

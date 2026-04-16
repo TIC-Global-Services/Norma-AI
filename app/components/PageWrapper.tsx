@@ -9,38 +9,47 @@ interface PageWrapperProps {
 
 export default function PageWrapper({ children }: PageWrapperProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Prevent scrolling during loading
     if (isLoading) {
       document.body.style.overflow = "hidden";
-    }
-
-    return () => {
+    } else {
       document.body.style.overflow = "";
-    };
+    }
   }, [isLoading]);
 
   const handleLoadingComplete = () => {
+    setIsReady(true);
+  };
+
+  const handleFadeComplete = () => {
     setIsLoading(false);
-    // Small delay before showing content for smooth transition
-    setTimeout(() => {
-      setShowContent(true);
-    }, 100);
   };
 
   return (
-    <>
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-
+    <div className="bg-black min-h-screen">
+      {/* Content - hidden*/}
       <div
-        className={`transition-opacity duration-700 ${
-          showContent ? "opacity-100" : "opacity-0"
+        className={`min-h-screen transition-opacity duration-700 ease-out ${
+          isReady ? "opacity-100" : "opacity-0"
         }`}
+        onTransitionEnd={isReady ? handleFadeComplete : undefined}
       >
         {children}
       </div>
-    </>
+
+      {/* Loading Screen */}
+      {isLoading && (
+        <div
+          className={`fixed inset-0 z-[9999] bg-black transition-opacity duration-500 ${
+            isReady ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+          onTransitionEnd={isReady ? () => setIsLoading(false) : undefined}
+        >
+          <LoadingScreen onComplete={handleLoadingComplete} />
+        </div>
+      )}
+    </div>
   );
 }

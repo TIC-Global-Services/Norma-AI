@@ -3,86 +3,99 @@
 import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
 import { useRef, useEffect } from "react";
-
-import ContainerLayout from "../layout/containerLayout"
-
+import ContainerLayout from "../layout/containerLayout";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutNorma(){
-
+export default function AboutNorma() {
     let containerRef = useRef(null);
     let secondContainerRef = useRef(null);
 
-    useEffect(()=>{
-
+    useEffect(() => {
         let split = SplitText.create(".textStyle", {
-            type:"words, chars"
-        })
+            type: "words, chars",
+        });
 
         let secondSplit = SplitText.create(".textSecondStyle", {
-            type:"words, chars"
-        })
+            type: "words, chars",
+        });
 
-         let tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: containerRef.current,
-            pin: false,
-            scrub: 2,
-            start:"35.5% bottom",
-            end: "bottom bottom", 
-            markers:false
-        }
-    });
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                pin: false,
+                scrub: 2,
+                start: "35.5% bottom",
+                end: "bottom bottom",
+                markers: false,
+            },
+        });
 
         tl.from(split.chars, {
-        color: "#FFFFFF66",
-        stagger: 0.01
-    })
+            color: "#FFFFFF66",
+            stagger: 0.01,
+        }).to(secondSplit.chars, {
+            color: "#552DF6",
+            stagger: 0.08,
+        });
+    }, []);
 
-    .to(secondSplit.chars, {
-        color: "#552DF6",
-        stagger: 0.08
-    });
-    
-    
-    },[])
+    return (
+        <section id="PlatformScope" className="relative w-full bg-black">
+            {/* Overlay blur shaders */}
+            <div className=" w-full absolute top-0 left-0 -translate-y-[70%] md:-translate-y-[70.43%] z-[9999]">
+                <div
+                    className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                    style={{
+                        maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    }}
+                />
+            </div>
 
 
-    return(
-        <section id="PlatformScope" className="w-full bg-black">
+            <div className=" w-full absolute bottom-0 left-0 translate-y-[60%] md:translate-y-[36.43%] z-[999]">
+                <div
+                    className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                    style={{
+                        maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    }}
+                />
+            </div>
 
             <ContainerLayout>
-
-                <div ref={containerRef} className="w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]">
-
+                <div
+                    ref={containerRef}
+                    className="relative z-20 w-full pt-0 md:pt-[4.55%] md:pb-[18.94%]"
+                >
                     {/* LOGO */}
-                    <div className="w-[20%] px-5 md:px-0  md:w-[10.61%] aspect-square overflow-hidden md:mb-[1.79%] ">
-
-                        <img src="/assets/img/logo/logo.png" alt="logo" className="w-full h-full object-cover scale-300 md:scale-200" />
-
+                    <div className="w-[20%] px-5 md:px-0 md:w-[10.61%] aspect-square overflow-hidden md:mb-[1.79%]">
+                        <img
+                            src="/assets/img/logo/logo.png"
+                            alt="logo"
+                            className="w-full h-full object-cover scale-300 md:scale-200"
+                        />
                     </div>
 
                     <div className="w-full py-[11.12%] md:py-0 md:pt-0 px-5 md:px-0 md:pl-[3.30%] md:pr-[8.48%]">
-
-                        <h2 className="textStyle  text-[25px] md:text-[54px] leading-[120%] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF] text-left break-words whitespace-normal">
+                        <h2 className="textStyle text-[25px] md:text-[54px] leading-[120%] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF] text-left break-words whitespace-normal">
                             Healthcare doesn't need more software. <br />
                             It needs less friction. <br />
                             It needs systems that work seamlessly where people already are. <br />
-
                         </h2>
 
-                        <h2 ref={secondContainerRef} className="textSecondStyle text-[25px] text-left md:text-[50px] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF66] mt-5">That's exactly what NORMA does.</h2>
-
+                        <h2
+                            ref={secondContainerRef}
+                            className="textSecondStyle text-[25px] text-left md:text-[50px] md:leading-[64px] md:tracking-[-0.5px] text-[#FFFFFF66] mt-5"
+                        >
+                            That's exactly what NORMA does.
+                        </h2>
                     </div>
-
                 </div>
-
             </ContainerLayout>
-            
         </section>
-    )
+    );
 }

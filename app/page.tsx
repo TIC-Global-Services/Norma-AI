@@ -9,6 +9,7 @@ import Questions from "./components/Questions"
 import Footer from "./components/Footer"
 import PageWrapper from "./components/PageWrapper"
 
+
 export default function Home(){
 
     return(
@@ -24,6 +25,6 @@ export default function Home(){
                 <Questions />
                 <Footer />
             </div>
-        </PageWrapper>
+          </PageWrapper>  
     )
 }

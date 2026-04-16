@@ -64,13 +64,9 @@ export default function LoadingScreen({
         0
       )
 
-      //Exit fade
-      .to(containerRef.current, {
-        opacity: 0,
-        scale: 1.04,
-        duration: 0.9,
-        ease: "power2.inOut",
-        onComplete,
+      // Exit animation
+      .add(() => {
+        onComplete();
       });
   }, [onComplete]);
 

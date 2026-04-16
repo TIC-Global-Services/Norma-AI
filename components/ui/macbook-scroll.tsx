@@ -52,18 +52,18 @@ export const MacbookScroll = ({
   }, []);
 
   const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 1 : 1.5], {
-  ease: (t) => t * (2 - t) // ease-out quad
-});
+    ease: (t) => t * (2 - t) // ease-out quad
+  });
 
   const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 1 : 1.5], {
-  ease: (t) => t * (2 - t)
-});
+    ease: (t) => t * (2 - t)
+  });
 
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1500], {
-  ease: (t) => t * (2 - t)
-});
-const rotate = useTransform(scrollYProgress, [0.1, 0.13], [-28, 0]);
-const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
+    ease: (t) => t * (2 - t)
+  });
+  const rotate = useTransform(scrollYProgress, [0.1, 0.13], [-28, 0]);
+  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
   return (
     <div
@@ -146,11 +146,14 @@ export const Lid = ({
           style={{
             boxShadow: "0px 2px 0px 2px #171717 inset",
           }}
-          className="absolute inset-0 flex mx-10 my-7 md:mx-0 md:my-0  items-center justify-center rounded-lg bg-[#010101] "
+          className="absolute inset-0 flex flex-col mx-10 my-7 md:mx-0 md:my-0  items-center justify-center rounded-lg bg-[#010101] "
         >
-          <span className="text-white">
-            <AceternityLogo />
-          </span>
+          <h2 className="text-white text-[18px] md:text-[28px] font-semibold leading-tight tracking-tight mb-2 text-center px-6">
+            Calculate Your Norma ROI
+          </h2>
+          <p className="text-[#FFFFFF99] text-[11px] md:text-[14px] leading-[1.5] text-center px-6">
+            Real numbers for your hospital, clinic, or practice. Adjust the sliders <br /> to match your scale.
+          </p>
         </div>
       </div>
       <motion.div
@@ -162,14 +165,14 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 w-full aspect-square md:aspect-[3684/3374] md:w-[48rem] rounded-2xl bg-[#010101] p-2"
+        className="absolute inset-0 w-full aspect-square md:left-4 md:w-[46rem] md:h-[28rem] rounded-2xl bg-[#010101]"
       >
-        <div className="absolute inset-0  rounded-lg bg-[#272729]" />
+        <div className="absolute inset-0 bg-[#272729] mx-10 my-7 md:mx-0 md:my-0 rounded-lg overflow-hidden" />
         <Image
-        fill
+          fill
           src={src as string}
-          alt="aceternity logo"
-          className="absolute inset-0  h-full w-full rounded-lg object-cover object-left-top"
+          alt="NormaCard"
+          className="absolute inset-0  h-full w-full rounded-lg object-covers"
         />
       </motion.div>
     </div>
@@ -634,9 +637,9 @@ export const OptionKey = ({ className }: { className: string }) => {
   );
 };
 
-const AceternityLogo = () => {
-  return (
+// const AceternityLogo = () => {
+//   return (
 
-    <img src="/assets/img/logo/logo.png" alt="Norma AI" className="w-[250px] h-[250px]"/>
-  );
-};
+//     <img src="/assets/img/logo/logo.png" alt="Norma AI" className="w-[250px] h-[250px]" />
+//   );
+// };

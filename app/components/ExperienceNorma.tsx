@@ -18,13 +18,13 @@ export default function ExperienceNorma() {
           pin: true,
           scrub: 1,
           start: "top top",
-          end: "+=1200",
+          end: "+=1400",
         },
       });
 
       tl.from(
         mobileRef.current, {
-        yPercent: 75,
+        yPercent: 40,
         ease: "sine.out"
       }
       );
@@ -36,10 +36,10 @@ export default function ExperienceNorma() {
   return (
     <section
       ref={containerRef}
-      className="w-full min-h-screen pt-[16%] md:pt-[6.94%] bg-black overflow-hidden"
+      className="w-full min-h-[100dvh] pt-[4%] md:pt-[6.94%] bg-black overflow-hidden"
     >
       {/* TOP TITLE CONTENT */}
-      <div className="w-full md:w-[45.14%] text-center mx-auto px-10 md:px-0 mt-24 md:mt-0 pb-[80px]">
+      <div className="w-full md:w-[45.14%] text-center mx-auto px-10 md:px-0 mt-15 md:mt-0">
         <h2 className="text-[24px] md:text-[50px] leading-[36px] tracking-[0%] text-[#FFFFFF] pb-[12px] md:pb-[4.62%]">
           Experience Norma
         </h2>
@@ -49,17 +49,17 @@ export default function ExperienceNorma() {
         </p>
       </div>
 
-      <div className="relative w-[55.47%] md:w-[24.56%] mt-[20px] aspect-[368/705] mx-auto overflow-hidden">
+      <div className="relative w-full mx-auto overflow-hidden h-[65vh] md:h-[100vh]">
         <img
           ref={mobileRef}
-          src="/assets/img/ExperienceNorma/mobileImage.png"
+          src="/assets/img/ExperienceNorma/normaMobile.png"
           alt="mobile image"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 
       {/* Overlay blur shaders */}
-      <div className="w-full absolute bottom-0 left-0 h-[65%] translate-y-[35%]">
+      <div className="w-full absolute bottom-0 left-0 h-[40%] translate-y-[30%] md:h-[60%] md:translate-y-[60%] xl:translate-y-[35%]">
         <div
           className="w-full h-full bg-[#000000]"
           style={{

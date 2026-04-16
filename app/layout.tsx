@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-    <body className={`${Aeonik.variable} antialiased relative`}>
+    <body className={`${Aeonik.variable} antialiased relative bg-black`}>
         <Providers>
           {children}
         </Providers>

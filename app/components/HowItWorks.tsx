@@ -161,22 +161,12 @@ export default function HowItWorks() {
   return (
     <section ref={containerRef} id="HowItWorks" className="relative w-full h-screen overflow-hidden">
       
-      <div className="hidden w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[71.43%]">
+      <div className="w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[70%]">
         <div
           className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
           style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%)",
-          }}
-        />
-      </div>
-
-      <div className="w-full absolute top-0 left-0  -translate-y-[30%] md:-translate-y-[71.43%]">
-        <div
-          className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
-          style={{
-            maskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, black 70%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, black 50%, black 60%, transparent 60%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, black 70%, transparent 60%)",
           }}
         />
       </div>
@@ -186,7 +176,7 @@ export default function HowItWorks() {
       <div
         className={`absolute w-full ${
           currentData === 2 ? "top-[4%]" : "top-[7.32%]"
-        } md:top-[15%] lg:w-[42.3%] md:w-[32.64%] md:top-[6.59%] md:left-[4.17%]`}
+        } md:top-[10%] lg:w-[42.3%] md:w-[32.64%] md:left-[4.17%]`}
       >
         <button className="flex items-center gap-3 px-[12px] md:px-[4.26%] py-[11px] md:py-[2.98%] rounded-full bg-[#FFFFFF1A] mb-5 md:mb-[6.38%] mx-4 md:mr-auto md:mx-0">
           <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="6" height="6" rx="3" fill="white"/></svg>
@@ -197,7 +187,7 @@ export default function HowItWorks() {
           <h2
             className={`text-[24px] leading-[28px] md:text-[50px] md:leading-[36px] tracking-[0%] text-[#FFFFFF] px-4 md:px-0 ${
               currentData === 2 ? "pb-2" : "pb-4"
-            } md:pb-[4.2553%] text-left`}
+            } md:pb-[2.2553%] text-left`}
           >
             {data[currentData].top.title}
           </h2>
@@ -214,7 +204,7 @@ export default function HowItWorks() {
             key={id}
             className={`relative group group-hover:backdrop-blur-none overflow-hidden w-full bg-[#FFFFFF33] hover:bg-[#FFFFFF]/30 backdrop-blur-[33.33px] border-t-[0.5px] border-r-[0.5px] border-[#000000] ${
               currentData === 2 ? "py-[18px] px-[18px]" : "py-[35px] px-[35px]"
-            } md:py-[2.78%] md:px-[2.08%]`}
+            } md:py-[1.78%] md:px-[2.08%]`}
           >
             <div className="absolute inset-0 overflow-hidden ">
               <video

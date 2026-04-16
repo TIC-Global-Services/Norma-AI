@@ -1,9 +1,10 @@
-
+"use client";
 
 import QandA from "./Reusable/QandA";
+import { useState } from "react";
 
-export default function Questions(){
-
+export default function Questions() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const data = [
         { 
@@ -50,7 +51,11 @@ export default function Questions(){
             question:"Can doctors use Norma too?",
             answer:"Yes. Norma has a separate doctor-facing layer with 23 specialized tools, from encounter notes to calendar sync to billing. Doctors can query their schedule, manage appointments, and handle admin tasks via WhatsApp in seconds."
         },
-    ]
+    ];
+
+    const handleToggle = (index: number) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
 
     return(
         <section id="FAQ" className="relative w-full px-[5%] md:px-[4.1667%] pt-[10%] md:pt-[4.1667%] bg-black ">
@@ -66,36 +71,43 @@ export default function Questions(){
                 />
             </div>
 
-
             {/* LOGO */}
             <div className="w-[25%] md:w-[10.606%] aspect-square overflow-hidden -translate-x-[30%] md:translate-x-[20%] translate-y-[14.29%] ">
-
                 <img src="/assets/img/logo/logo.png" alt="logo" className="w-full h-full object-cover scale-200" />
-
             </div>
-
 
             {/* Content Container */}
             <div className="w-full flex items-start flex-wrap md:flex-nowrap md:gap-[10.31%] md:ml-[0.95%] pb-[10%] md:mt-[2%] md:pb-[13.79%]">
 
-                <h2 className="w-[40.53%] mr-auto md:mr-0 md:mx-auto md:mx-0 text-[20px] leading-[24px] tracking-[-0.36px] md:text-[36px] md:leading-[39.6px] md:tracking-[-0.36px] text-[#FFFFFFE5] lg:w-[21.9%] md:w-[20.9848%]">Frequently Asked  Questions</h2>
-
+                <h2 className="w-[40.53%] mr-auto md:mr-0 md:mx-auto md:mx-0 text-[20px] leading-[24px] tracking-[-0.36px] md:text-[36px] md:leading-[39.6px] md:tracking-[-0.36px] text-[#FFFFFFE5] lg:w-[21.9%] md:w-[20.9848%]">Frequently Asked Questions</h2>
 
                 <div className="w-full md:w-[62.66%] pt-[40px] md:pt-0">
-
                     {
-                        data.map((data, id)=>(
-                            <div key={id} className="w-full">
-                                <QandA question={data.question} answer={data.answer} />
+                        data.map((item, index) => (
+                            <div key={index} className="w-full">
+                                <QandA 
+                                    question={item.question} 
+                                    answer={item.answer}
+                                    isOpen={openIndex === index}
+                                    onToggle={() => handleToggle(index)}
+                                />
                             </div>
                         ))
                     }
-
                 </div>
 
             </div>
 
-            
+            {/* Overlay blur shaders */}
+            <div className=" w-full absolute bottom-0 left-0 translate-y-[50%] md:translate-y-[34.43%] z-[999]">
+                <div
+                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
+                style={{
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                }}
+                />
+            </div>
 
         </section>
     )

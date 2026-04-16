@@ -24,7 +24,7 @@ export default function ExperienceNorma() {
 
       tl.from(
         mobileRef.current, {
-        yPercent: 40,
+        yPercent: 70,
         ease: "sine.out"
       }
       );
@@ -49,7 +49,7 @@ export default function ExperienceNorma() {
         </p>
       </div>
 
-      <div className="relative w-full mx-auto overflow-hidden h-[65vh] md:h-[100vh]">
+      <div className="relative w-full mx-auto overflow-hidden h-[75vh] md:h-[100vh]">
         <img
           ref={mobileRef}
           src="/assets/img/ExperienceNorma/normaMobile.png"
@@ -59,7 +59,7 @@ export default function ExperienceNorma() {
       </div>
 
       {/* Overlay blur shaders */}
-      <div className="w-full absolute bottom-0 left-0 h-[40%] translate-y-[30%] md:h-[60%] md:translate-y-[60%] xl:translate-y-[35%]">
+      <div className="w-full absolute bottom-0 left-0 h-[45%] translate-y-[40%]">
         <div
           className="w-full h-full bg-[#000000]"
           style={{

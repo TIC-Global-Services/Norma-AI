@@ -13,6 +13,7 @@ export default function Hero() {
     let containerRef2 = useRef(null);
     let containerRef = useRef(null);
     let scrollTextRef = useRef(null);
+    let overlayRef = useRef(null);
 
     useEffect(() => {
 
@@ -36,14 +37,22 @@ export default function Hero() {
             }
         })
 
+        gsap.to(overlayRef.current, {
+            y: -100,
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top top",
+                scrub: true,
+            },
+        });
+
+
         // Scroll text
         gsap.to(scrollTextRef.current, {
-            opacity: 0,
-            y: -40,
+            y: -50,
             scrollTrigger: {
                 trigger: scrollTextRef.current,
-                start: "top 0%",
-                end: "top 40%",
+                start: "top 60%",
                 scrub: true,
             }
         })
@@ -98,13 +107,13 @@ export default function Hero() {
             </div>
 
             {/* Overlay blur shaders */}
-            <div className=" w-full absolute bottom-0 left-0 translate-y-[0%] z-[9999]">
+            <div ref={overlayRef} className=" w-full absolute bottom-0 left-0 translate-y-[0%] z-[9999]">
                 <div
-                className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
-                style={{
-                    maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
-                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
-                }}
+                    className="w-full h-[10dvh] bg-[#000000]"
+                    style={{
+                        maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
+                    }}
                 />
             </div>
 

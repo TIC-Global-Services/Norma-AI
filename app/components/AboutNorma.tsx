@@ -26,10 +26,9 @@ export default function AboutNorma() {
             scrollTrigger: {
                 trigger: containerRef.current,
                 pin: false,
-                scrub: 2,
-                start: "35.5% bottom",
-                end: "bottom bottom",
-                markers: false,
+                scrub: true,
+                start: "top 45%",
+                end: "top 10%",
             },
         });
 
@@ -45,7 +44,7 @@ export default function AboutNorma() {
     return (
         <section id="PlatformScope" className="relative w-full bg-black">
             {/* Overlay blur shaders */}
-            <div className=" w-full absolute top-0 left-0 -translate-y-[70%] md:-translate-y-[70.43%] z-[9999]">
+             <div className=" w-full absolute top-0 left-0 -translate-y-[70%] md:-translate-y-[70.43%] z-[9999]">
                 <div
                     className="w-full aspect-768/140 md:aspect-1440/140 bg-[#000000]"
                     style={{
@@ -53,7 +52,7 @@ export default function AboutNorma() {
                         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 40%, black 70%, transparent 100%)",
                     }}
                 />
-            </div>
+            </div> 
 
 
             <div className=" w-full absolute bottom-0 left-0 translate-y-[60%] md:translate-y-[36.43%] z-[999]">
